@@ -41,23 +41,23 @@
       "platforms": {
         "darwin-arm64": {
           "fileName": "xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz",
-          "sha256": "61e7b191ed1e4fe7ea19efdbe88412589e9a1912ac5b80998ee6d8e6294d5d70"
+          "sha256": "64e411380f9b51271015573f32191657e5fec92106c84cbd08227b497a483882"
         },
         "darwin-x64": {
           "fileName": "xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz",
-          "sha256": "42d28d293387301cc3e44d99b1fb63ce63c589199e822169f42147eeb14d81c2"
+          "sha256": "9d998eaaa6328eb5aff985d83f90f15d89a1bfedab0e0c8e48b5ff6d87f64076"
         },
         "linux-arm64": {
           "fileName": "xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz",
-          "sha256": "e964d444dd4f4b6b3285cfbbe3f2672da26a9541d569161fe9675baed8982519"
+          "sha256": "92f8a608328af736cd84fccd316190af862b9354b960ac853a4fe2fabab72271"
         },
         "linux-arm": {
           "fileName": "xpack-pkg-config-0.29.2-1-linux-arm.tar.gz",
-          "sha256": "f48bf526db0d5d03d3b9a6ea97c030c786fec759c7fef204834995fa980955ab"
+          "sha256": "09e3a3d8ed82bd0bfdebf0b4893cfafebe902f026872699676c7e267cabd60fe"
         },
         "linux-x64": {
           "fileName": "xpack-pkg-config-0.29.2-1-linux-x64.tar.gz",
-          "sha256": "390146e043321cbfb1073aed0e2cf5c186f8fac6bd9b05bda7977f59168eb6e3"
+          "sha256": "066a6f55165c6cc6082c8dfabf9c5573938f680e71a125b874d7176557db2497"
         }
       }
     },
