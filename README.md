@@ -106,10 +106,13 @@ xpacks/xpack-dev-tools-pkg-config/.content/
 │   ├── licenses
 │   ├── patches
 │   └── scripts
+├── libexec
+│   └── libiconv.2.dylib
 └── share
+    ├── aclocal
     └── doc
 
-7 directories, 3 files
+9 directories, 4 files
 ```
 
 No other files are installed in any system folders or other locations.
