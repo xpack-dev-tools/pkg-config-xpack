@@ -170,7 +170,7 @@ relative path.
 ## Documentation
 
 The original documentation is available
-[online](https://pkg-config.org/manual.html).
+[online](https://people.freedesktop.org/~dbn/pkg-config-guide.html).
 
 ## Build
 
