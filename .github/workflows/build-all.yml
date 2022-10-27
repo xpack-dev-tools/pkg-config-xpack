@@ -51,7 +51,7 @@ jobs:
           echo "node: $(node --version)"
           echo "npm: $(npm --version)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
         run: rm -rf * .git*
@@ -120,7 +120,7 @@ jobs:
           echo "node: $(node --version)"
           echo "npm: $(npm --version)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
         run: rm -rf * .git*
@@ -188,7 +188,7 @@ jobs:
           echo "node: $(node --version)"
           echo "npm: $(npm --version)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
         run: rm -rf * .git*
@@ -252,7 +252,7 @@ jobs:
           echo "node: $(node --version)"
           echo "npm: $(npm --version)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
         run: rm -rf * .git*
@@ -317,7 +317,7 @@ jobs:
           echo "node: $(node --version)"
           echo "npm: $(npm --version)"
           ls -lLA
-          env | sort
+          env | sort | egrep '^[^ \t]+='
 
       - name: 'Clean working area'
         run: rm -rf * .git*
