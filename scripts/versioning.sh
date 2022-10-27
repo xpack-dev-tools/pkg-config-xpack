@@ -10,7 +10,7 @@
 
 # -----------------------------------------------------------------------------
 
-function build_versioned_components()
+function build_application_versioned_components()
 {
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
@@ -25,11 +25,8 @@ function build_versioned_components()
     xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
     xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
-    if true # [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
-    then
-      # https://ftp.gnu.org/pub/gnu/libiconv/
-      build_libiconv "1.17" # "1.16"
-    fi
+    # https://ftp.gnu.org/pub/gnu/libiconv/
+    build_libiconv "1.17"
 
     xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
 
