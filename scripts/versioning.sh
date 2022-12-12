@@ -15,7 +15,7 @@ function build_application_versioned_components()
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
   # bfdver.h file remains empty.
-  XBB_BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${XBB_TARGET_MACHINE}"
+  XBB_BRANDING="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME} ${XBB_REQUESTED_TARGET_MACHINE}"
 
   XBB_PKG_CONFIG_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
 
