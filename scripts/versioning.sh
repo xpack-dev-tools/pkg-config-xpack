@@ -10,7 +10,7 @@
 
 # -----------------------------------------------------------------------------
 
-function build_application_versioned_components()
+function application_build_versioned_components()
 {
   # Don't use a comma since the regular expression
   # that processes this string in the Makefile, silently fails and the
@@ -26,12 +26,13 @@ function build_application_versioned_components()
     xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
     # https://ftp.gnu.org/pub/gnu/libiconv/
-    build_libiconv "1.17"
+    libiconv_build "1.17"
+
 
     xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
 
     # https://pkgconfig.freedesktop.org/releases/
-    build_pkg_config "${XBB_PKG_CONFIG_VERSION}"
+    pkg_config_build "${XBB_PKG_CONFIG_VERSION}"
 
     # -------------------------------------------------------------------------
   else
