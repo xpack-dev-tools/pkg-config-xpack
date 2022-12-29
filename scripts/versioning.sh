@@ -20,7 +20,7 @@ function application_build_versioned_components()
   XBB_PKG_CONFIG_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
 
   # Keep them in sync with combo archive content.
-  if [[ "${XBB_RELEASE_VERSION}" =~ 0\.29\.2-* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 0[.]29[.]2-.* ]]
   then
     # -------------------------------------------------------------------------
     # Build the native dependencies.
