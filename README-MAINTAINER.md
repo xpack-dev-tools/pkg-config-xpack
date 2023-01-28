@@ -95,7 +95,7 @@ and compare the the xPack [Releases](https://github.com/xpack-dev-tools/pkg-conf
 ### Increase the version
 
 Determine the version (like `0.29.2`) and update the `scripts/VERSION`
-file; the format is `0.29.2-1`. The fourth number is the xPack release number
+file; the format is `0.29.2-2`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -105,7 +105,7 @@ Check GitHub issues and pull requests:
 
 - <https://github.com/xpack-dev-tools/pkg-config-xpack/issues/>
 
-and fix them; assign them to a milestone (like `0.29.2-1`).
+and fix them; assign them to a milestone (like `0.29.2-2`).
 
 ### Check `README.md`
 
@@ -122,8 +122,8 @@ but in the version specific release page.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _* v0.29.2-1 prepared_
-- commit with a message like _prepare v0.29.2-1_
+- add a new entry like _* v0.29.2-2 prepared_
+- commit with a message like _prepare v0.29.2-2_
 
 ### Merge upstream repo
 
@@ -221,8 +221,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/darwin-x64/deploy
 total 1680
--rw-r--r--  1 ilg  staff  853805 Oct 25 13:48 xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     110 Oct 25 13:48 xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  853805 Oct 25 13:48 xpack-pkg-config-0.29.2-2-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     110 Oct 25 13:48 xpack-pkg-config-0.29.2-2-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -254,8 +254,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/darwin-arm64/deploy
 total 1680
--rw-r--r--  1 ilg  staff  855289 Oct 25 13:47 xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     112 Oct 25 13:47 xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  855289 Oct 25 13:47 xpack-pkg-config-0.29.2-2-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     112 Oct 25 13:47 xpack-pkg-config-0.29.2-2-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -289,8 +289,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/linux-x64/deploy
 total 876
--rw-r--r-- 1 root root 891159 Oct 25 10:45 xpack-pkg-config-0.29.2-1-linux-x64.tar.gz
--rw-r--r-- 1 root root    109 Oct 25 10:45 xpack-pkg-config-0.29.2-1-linux-x64.tar.gz.sha
+-rw-r--r-- 1 root root 891159 Oct 25 10:45 xpack-pkg-config-0.29.2-2-linux-x64.tar.gz
+-rw-r--r-- 1 root root    109 Oct 25 10:45 xpack-pkg-config-0.29.2-2-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Windows binaries
@@ -326,8 +326,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/linux-arm64/deploy
 total 880
--rw-r--r-- 1 root root 895542 Oct 25 10:50 xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz
--rw-r--r-- 1 root root    111 Oct 25 10:50 xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz.sha
+-rw-r--r-- 1 root root 895542 Oct 25 10:50 xpack-pkg-config-0.29.2-2-linux-arm64.tar.gz
+-rw-r--r-- 1 root root    111 Oct 25 10:50 xpack-pkg-config-0.29.2-2-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -359,8 +359,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/linux-arm/deploy
 total 864
--rw-r--r-- 1 root root 879831 Oct 25 10:51 xpack-pkg-config-0.29.2-1-linux-arm.tar.gz
--rw-r--r-- 1 root root    109 Oct 25 10:51 xpack-pkg-config-0.29.2-1-linux-arm.tar.gz.sha
+-rw-r--r-- 1 root root 879831 Oct 25 10:51 xpack-pkg-config-0.29.2-2-linux-arm.tar.gz
+-rw-r--r-- 1 root root    109 Oct 25 10:51 xpack-pkg-config-0.29.2-2-linux-arm.tar.gz.sha
 ```
 
 ### Files cache
@@ -527,13 +527,13 @@ xattr -dr com.apple.quarantine ${HOME}/Downloads/xpack-*
 On GNU/Linux and macOS systems, use:
 
 ```sh
-.../xpack-pkg-config-0.29.2-1/bin/pkg-config --version
+.../xpack-pkg-config-0.29.2-2/bin/pkg-config --version
 0.29.2
 ```
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add the release date and a message like _* v0.29.2-1 released_
+- in `CHANGELOG.md`, add the release date and a message like _* v0.29.2-2 released_
 - commit with _CHANGELOG update_
 - check and possibly update the `templates/body-github-release-liquid.md`
 - push the `xpack-develop` branch
@@ -544,8 +544,8 @@ The workflow result and logs are available from the
 
 The result is a
 [draft pre-release](https://github.com/xpack-dev-tools/pkg-config-xpack/releases/)
-tagged like **v0.29.2-1** (mind the dash in the middle!) and
-named like **xPack pkg-config v0.29.2-1** (mind the dash),
+tagged like **v0.29.2-2** (mind the dash in the middle!) and
+named like **xPack pkg-config v0.29.2-2** (mind the dash),
 with all binaries attached.
 
 - edit the draft and attach it to the `xpack-develop` branch (important!)
@@ -570,7 +570,7 @@ If any, refer to closed
 ## Update the preview Web
 
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
-  use a message like _xPack pkg-config v0.29.2-1 released_
+  use a message like _xPack pkg-config v0.29.2-2 released_
 - push to GitHub
 - wait for the GitHub Pages build to complete
 - the preview web is <https://xpack.github.io/web-preview/news/>
@@ -612,18 +612,18 @@ watching this project.
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  _package.json: update urls for 0.29.2-1.1 release_ (without _v_)
+  _package.json: update urls for 0.29.2-2.1 release_ (without _v_)
 
 ## Publish on the npmjs.com server
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`, add a line like _* v0.29.2-1.1 published on npmjs.com_
-- commit with a message like _CHANGELOG: publish npm v0.29.2-1.1_
+- update `CHANGELOG.md`, add a line like _* v0.29.2-2.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v0.29.2-2.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
-- `npm version 0.29.2-1.1`; the first 4 numbers are the same as the
+- `npm version 0.29.2-2.1`; the first 4 numbers are the same as the
   GitHub release; the fifth number is the npm specific version
 - the commits and the tag should have been pushed by the `postversion` script;
   if not, push them with `git push origin --tags`
@@ -652,12 +652,12 @@ The tests results are available from the
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/pkg-config`
-- `npm dist-tag add @xpack-dev-tools/pkg-config@0.29.2-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/pkg-config@0.29.2-2.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/pkg-config`
 
 In case the previous version is not functional and needs to be unpublished:
 
-- `npm unpublish @xpack-dev-tools/pkg-config@0.29.2-1.1`
+- `npm unpublish @xpack-dev-tools/pkg-config@0.29.2-2.1`
 
 ## Update the Web
 
@@ -679,7 +679,7 @@ In case the previous version is not functional and needs to be unpublished:
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack pkg-config v0.29.2-1 released**
+- paste the release name like **xPack pkg-config v0.29.2-2 released**
 - paste the link to the Web page
   [release](https://xpack.github.io/pkg-config/releases/)
 - click the **Tweet** button
