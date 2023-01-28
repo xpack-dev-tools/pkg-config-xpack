@@ -221,8 +221,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/darwin-x64/deploy
 total 1680
--rw-r--r--  1 ilg  staff  853805 Oct 25 13:48 xpack-pkg-config-0.29.2-2-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     110 Oct 25 13:48 xpack-pkg-config-0.29.2-2-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  853169 Jan 28 22:40 xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     110 Jan 28 22:40 xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -253,9 +253,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/darwin-arm64/deploy
-total 1680
--rw-r--r--  1 ilg  staff  855289 Oct 25 13:47 xpack-pkg-config-0.29.2-2-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     112 Oct 25 13:47 xpack-pkg-config-0.29.2-2-darwin-arm64.tar.gz.sha
+total 1696
+-rw-r--r--  1 ilg  staff  860987 Jan 28 22:41 xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     112 Jan 28 22:41 xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -288,9 +288,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/linux-x64/deploy
-total 876
--rw-r--r-- 1 root root 891159 Oct 25 10:45 xpack-pkg-config-0.29.2-2-linux-x64.tar.gz
--rw-r--r-- 1 root root    109 Oct 25 10:45 xpack-pkg-config-0.29.2-2-linux-x64.tar.gz.sha
+total 860
+-rw-r--r-- 1 ilg ilg 874508 Jan 28 20:41 xpack-pkg-config-0.29.2-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg    109 Jan 28 20:41 xpack-pkg-config-0.29.2-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Windows binaries
@@ -325,9 +325,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/linux-arm64/deploy
-total 880
--rw-r--r-- 1 root root 895542 Oct 25 10:50 xpack-pkg-config-0.29.2-2-linux-arm64.tar.gz
--rw-r--r-- 1 root root    111 Oct 25 10:50 xpack-pkg-config-0.29.2-2-linux-arm64.tar.gz.sha
+total 860
+-rw-r--r-- 1 ilg ilg 874685 Jan 28 20:43 xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg    111 Jan 28 20:43 xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -358,9 +358,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/pkg-config-xpack.git/build/linux-arm/deploy
-total 864
--rw-r--r-- 1 root root 879831 Oct 25 10:51 xpack-pkg-config-0.29.2-2-linux-arm.tar.gz
--rw-r--r-- 1 root root    109 Oct 25 10:51 xpack-pkg-config-0.29.2-2-linux-arm.tar.gz.sha
+total 844
+-rw-r--r-- 1 ilg ilg 860054 Jan 28 20:44 xpack-pkg-config-0.29.2-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg    109 Jan 28 20:44 xpack-pkg-config-0.29.2-1-linux-arm.tar.gz.sha
 ```
 
 ### Files cache
