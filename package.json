@@ -36,28 +36,28 @@
     "minimumXpmRequired": "0.14.0",
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/pkg-config-xpack/releases/download/v0.29.2-1",
+      "baseUrl": "https://github.com/xpack-dev-tools/pkg-config-xpack/releases/download/v0.29.2-2",
       "skip": 1,
       "platforms": {
         "darwin-arm64": {
-          "fileName": "xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz",
-          "sha256": "64e411380f9b51271015573f32191657e5fec92106c84cbd08227b497a483882"
+          "fileName": "xpack-pkg-config-0.29.2-2-darwin-arm64.tar.gz",
+          "sha256": "1e4e7f29ef49ba7484b543396eace71a50b50d1fc4b12a59e35cb3853239c87d"
         },
         "darwin-x64": {
-          "fileName": "xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz",
-          "sha256": "9d998eaaa6328eb5aff985d83f90f15d89a1bfedab0e0c8e48b5ff6d87f64076"
+          "fileName": "xpack-pkg-config-0.29.2-2-darwin-x64.tar.gz",
+          "sha256": "cb3f7795395750c6d941ce171713ac833c5c3860aaf54925ab05bbb59944ef87"
         },
         "linux-arm64": {
-          "fileName": "xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz",
-          "sha256": "92f8a608328af736cd84fccd316190af862b9354b960ac853a4fe2fabab72271"
+          "fileName": "xpack-pkg-config-0.29.2-2-linux-arm64.tar.gz",
+          "sha256": "9b593c297e328b0a35a25a2eb2e2dfbcc4b5eb2510dbb307143980a733a36278"
         },
         "linux-arm": {
-          "fileName": "xpack-pkg-config-0.29.2-1-linux-arm.tar.gz",
-          "sha256": "09e3a3d8ed82bd0bfdebf0b4893cfafebe902f026872699676c7e267cabd60fe"
+          "fileName": "xpack-pkg-config-0.29.2-2-linux-arm.tar.gz",
+          "sha256": "904658d86cfe36db0bd59423bb78517aebb2c5e7458d98ae2c39ee52fbabf0a4"
         },
         "linux-x64": {
-          "fileName": "xpack-pkg-config-0.29.2-1-linux-x64.tar.gz",
-          "sha256": "066a6f55165c6cc6082c8dfabf9c5573938f680e71a125b874d7176557db2497"
+          "fileName": "xpack-pkg-config-0.29.2-2-linux-x64.tar.gz",
+          "sha256": "2fc1e3db9f7a94b99d003e5b882a6c3bf1c30ff1faea7e921c111f1be06baf60"
         }
       }
     },
