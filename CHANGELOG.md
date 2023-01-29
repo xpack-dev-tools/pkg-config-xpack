@@ -2,9 +2,16 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-01-29
+
+* 456d81b package.json: bump deps
+
 ## 2023-01-28
 
-* v0.29.2-2 prepared
+* 100968f README update
+* dd7c80b package-lock.json update
+* 01fa595 re-generate workflows
+* e1cc02d prepare v0.29.2-2
 * b2a0c42 README-MAINTAINER remove caffeinate xpm
 * df154d2 package.json: bump deps
 * e72dfd6 versioning.sh: use versioning functions
