@@ -4,6 +4,9 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-01-29
 
+* v0.29.2-2.1 published on npmjs.com
+* 1c392f2 package.json: update urls for 0.29.2-2.1 release
+* 4ab839b CHANGELOG update
 * 456d81b package.json: bump deps
 
 ## 2023-01-28
