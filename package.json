@@ -65,7 +65,7 @@
       "pkg-config": "./.content/bin/pkg-config"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^1.4.0"
+      "@xpack-dev-tools/xbb-helper": "^1.4.1"
     },
     "properties": {
       "appName": "pkg-config",
@@ -206,7 +206,7 @@
         ],
         "devDependencies": {
           "@xpack-dev-tools/clang": "15.0.7-2.1",
-          "@xpack-dev-tools/realpath": "9.1.0-1.1",
+          "@xpack-dev-tools/realpath": "9.1.0-2.1",
           "@xpack-dev-tools/sed": "4.9.0-1.1"
         },
         "actions": {
