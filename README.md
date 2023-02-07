@@ -67,7 +67,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/pkg-config@latest
+xpm install @xpack-dev-tools/pkg-config@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -89,7 +89,7 @@ This location is configurable via the environment variable
 It is also possible to install pkg-config globally, in the user home folder:
 
 ```sh
-xpm install --global @xpack-dev-tools/pkg-config@latest
+xpm install --global @xpack-dev-tools/pkg-config@latest --verbose
 ```
 
 After install, the package should create a structure like this (macOS files;
