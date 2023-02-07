@@ -7,10 +7,12 @@ summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fix
 
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
-pkg_config_version: 0.29.2
-pkg_config_date: 2017-03-20
+pkg_config_version: "0.29.2"
+pkg_config_date: "2017-03-20"
+
 version: "{{ XBB_RELEASE_VERSION }}"
-npm_subversion: 1
+npm_subversion: "1"
+
 download_url: https://github.com/xpack-dev-tools/pkg-config-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
@@ -58,7 +60,7 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
 
 The full details of installing the **xPack pkg-config** on various platforms
 are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/pkg-config/install/) page.
+[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/pkg-config/install/) page.
 
 ### Easy install
 
@@ -76,7 +78,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/pkg-config@latest
+xpm install @xpack-dev-tools/pkg-config@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -84,7 +86,7 @@ ls -l xpacks/.bin
 To install this specific version, use:
 
 ```sh
-xpm install @xpack-dev-tools/pkg-config@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %}
+xpm install @xpack-dev-tools/pkg-config@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
 ```
 
 It is also possible to install Meson Build globally, in the user home folder,
@@ -92,7 +94,7 @@ but this requires xPack aware tools to automatically identify them and
 manage paths.
 
 ```sh
-xpm install --global @xpack-dev-tools/pkg-config@latest
+xpm install --global @xpack-dev-tools/pkg-config@latest --verbose
 ```
 
 ### Uninstall
@@ -114,7 +116,7 @@ xpm uninstall --global @xpack-dev-tools/pkg-config
 ## Compliance
 
 The xPack pkg-config generally follows the official
-[pkg-config](http://pkg-config.org) releases.
+[pkg-config](https://pkgconfig.freedesktop.org/releases/) releases.
 
 The current version is based on:
 
