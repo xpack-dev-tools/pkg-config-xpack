@@ -51,6 +51,12 @@ git clone \
   ~/Work/xpacks/pkg-config-xpack.git
 ```
 
+Or, if the repo was already cloned:
+
+```sh
+git -C ~/Work/xpacks/pkg-config-xpack.git pull
+```
+
 ## Get helper sources
 
 The project has a dependency to a common **helper**; clone the
@@ -548,7 +554,7 @@ and check the binaries.
 On macOS, remove the `com.apple.quarantine` flag:
 
 ```sh
-xattr -dr com.apple.quarantine ${HOME}/Downloads/xpack-*
+xattr -cr ${HOME}/Downloads/xpack-*
 ```
 
 On GNU/Linux and macOS systems, use:
