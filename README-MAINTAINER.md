@@ -204,6 +204,12 @@ xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
+For a debug build:
+
+```sh
+xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+```
+
 When functional, push the `xpack-develop` branch to GitHub.
 
 Run the native build on the production machine
@@ -224,6 +230,12 @@ xpm run deep-clean --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpac
 
 xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+```
+
+For a debug build:
+
+```sh
+xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 The build takes about 30 minutes.
