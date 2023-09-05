@@ -60,7 +60,7 @@
       "pkg-config": "./.content/bin/pkg-config"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^1.10.8"
+      "@xpack-dev-tools/xbb-helper": "^1.11.1"
     },
     "properties": {
       "appName": "pkg-config",
@@ -240,7 +240,7 @@
           "@xpack-dev-tools/patchelf": "0.17.2-1.1"
         },
         "properties": {
-          "dockerImage": "ilegeul/ubuntu:amd64-18.04-xbb-v5.0.0"
+          "dockerImage": "ilegeul/ubuntu:amd64-18.04-xbb-v5.1.0"
         }
       },
       "linux-arm64": {
@@ -248,7 +248,7 @@
           "linux-x64"
         ],
         "properties": {
-          "dockerImage": "ilegeul/ubuntu:arm64v8-18.04-xbb-v5.0.0"
+          "dockerImage": "ilegeul/ubuntu:arm64v8-18.04-xbb-v5.1.0"
         }
       },
       "linux-arm": {
@@ -256,7 +256,7 @@
           "linux-x64"
         ],
         "properties": {
-          "dockerImage": "ilegeul/ubuntu:arm32v7-18.04-xbb-v5.0.0"
+          "dockerImage": "ilegeul/ubuntu:arm32v7-18.04-xbb-v5.1.0"
         }
       }
     }
@@ -266,6 +266,6 @@
     "https://www.npmjs.com/package/liquidjs"
   ],
   "devDependencies": {
-    "liquidjs": "^10.8.4"
+    "liquidjs": "^10.9.2"
   }
 }
