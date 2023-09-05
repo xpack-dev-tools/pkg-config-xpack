@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/pkg-config",
-  "version": "0.29.2-2.1",
+  "version": "0.29.2-3.1.pre",
   "description": "A binary xPack with the pkg-config executable",
   "main": "",
   "scripts": {

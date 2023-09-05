@@ -100,8 +100,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/pkg-config/0.29.2-2.1/.content/
-/Users/ilg/Library/xPacks/\@xpack-dev-tools/pkg-config/0.29.2-2.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/pkg-config/0.29.2-3.1/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/pkg-config/0.29.2-3.1/.content/
 ├── README.md
 ├── bin
 │   └── pkg-config
@@ -161,12 +161,12 @@ like `0.29.2`;
 to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
-like `0.29.2-2`. When published as a npm package, the version gets
-a fifth number, like `0.29.2-2.1`.
+like `0.29.2-3`. When published as a npm package, the version gets
+a fifth number, like `0.29.2-3.1`.
 
 Since adherence of third party packages to semver is not guaranteed,
 it is recommended to use semver expressions like `^0.29.2` and `~0.29.2`
-with caution, and prefer exact matches, like `0.29.2-2.1`.
+with caution, and prefer exact matches, like `0.29.2-3.1`.
 
 ## Maintainer info
 

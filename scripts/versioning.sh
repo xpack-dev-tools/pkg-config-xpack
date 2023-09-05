@@ -20,7 +20,7 @@ function application_build_versioned_components()
   XBB_PKG_CONFIG_VERSION="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
 
   # Keep them in sync with the combo archive content.
-  if [[ "${XBB_RELEASE_VERSION}" =~ 0[.]29[.]2-.* ]]
+  if [[ "${XBB_RELEASE_VERSION}" =~ 0[.]29[.][23]-.* ]]
   then
     # -------------------------------------------------------------------------
     # Build the native dependencies.

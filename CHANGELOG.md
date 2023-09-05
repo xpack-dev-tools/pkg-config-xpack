@@ -2,9 +2,116 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-09-05
+
+* v0.29.2-3 prepared
+* eea61d1 dot.*ignore update
+* 32393a3 re-generate workflows
+* 2773827 READMEs update
+* b692656 package.json: bump deps
+
+## 2023-09-03
+
+* 0864bbe package.json: bump deps
+
+## 2023-08-28
+
+* a0cc591 READMEs update
+
+## 2023-08-25
+
+* b103b6a package.json: rm xpack-dev-tools-build/*
+* df25c75 package.json: bump deps
+
+## 2023-08-21
+
+* 6da6c03 READMEs update
+* e0dfaa7 package.json: bump deps
+
+## 2023-08-19
+
+* 7d0c60d READMEs update
+* 43b3909 package.json: bump deps
+
+## 2023-08-15
+
+* 5b5c0ef re-generate workflows
+* 592ed66 README-MAINTAINER rename xbbla
+* 47860ff package.json: rename xbbla
+* c3251f7 package.json: bump deps
+* 024d3e4 READMEs update
+* 7629337 package.json: bump deps
+
+## 2023-08-05
+
+* d70acaf READMEs update
+
+## 2023-08-04
+
+* 3b46ab9 READMEs update
+* 853f126 READMEs update
+* 409f260 package.json: add build-develop-debug
+* 976ea05 READMEs update
+
+## 2023-08-03
+
+* 78cf706 package.json: reorder build actions
+* 744dff0 READMEs update
+* 3b17876 package.json: bump deps
+
+## 2023-07-28
+
+* 1cb0d2b READMEs update
+* 7b4ef92 READMEs update
+* 4594328 package.json: bump deps
+* 5b18eca package.json: liquidjs --context --template
+* 279d241 scripts cosmetics
+* 2099c40 re-generate workflows
+* 84c866d READMEs update
+* f840a72 package.json: minXpm 0.16.3 & @xpack-dev-tools/xbb-helper
+* f117af0 READMEs update
+* 2186a2e package.json: bump deps
+
+## 2023-07-26
+
+* e96d6e5 package.json: move scripts to actions
+* df0f924 package.json: update xpack-dev-tools path
+* bc6ccf6 READMEs update xpack-dev-tools path
+* b14e4f1 body-jekyll update
+* b6a7d74 READMEs update
+
+## 2023-07-17
+
+* 3a7be72 package.json: bump deps
+
+## 2023-03-25
+
+* bff7a6b READMEs update
+* 4bef990 READMEs update prerequisites
+* 1f21bce package.json: mkdir -pv cache
+
+## 2023-02-22
+
+* b798b4a READMEs update
+
+## 2023-02-14
+
+* 2acb0fc body-jekyll update
+
+## 2023-02-10
+
+* 3257e15 package.json: update Work/xpacks
+* 0a5a910 READMEs update
+
+## 2023-02-07
+
+* 68885ac READMEs update
+* b253900 body-jekyll update
+
 ## 2023-01-29
 
-* v0.29.2-2.1 published on npmjs.com
+* 3afb12e 0.29.2-2.1
+* 64d4b28 CHANGELOG: publish npm v0.29.2-2.1
 * 1c392f2 package.json: update urls for 0.29.2-2.1 release
 * 4ab839b CHANGELOG update
 * 456d81b package.json: bump deps
