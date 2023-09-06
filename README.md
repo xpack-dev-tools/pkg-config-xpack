@@ -116,7 +116,7 @@ $ tree -L 2 /Users/ilg/Library/xPacks/\@xpack-dev-tools/pkg-config/0.29.2-3.1/.c
     ├── aclocal
     └── doc
 
-9 directories, 4 files
+10 directories, 4 files
 ```
 
 No other files are installed in any system folders or other locations.
