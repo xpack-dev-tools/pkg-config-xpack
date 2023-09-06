@@ -134,7 +134,7 @@ but in the version specific release page.
 
 ### Update version in `package.json` to a pre-release
 
-Use a new version, suffixed by `.pre`.
+Use the new version, suffixed by `pre`, like `0.29.2-3.1.pre`.
 
 ### Update `CHANGELOG.md`
 
@@ -225,9 +225,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/pkg-config-xpack.git/build/darwin-x64/deploy
-total 1680
--rw-r--r--  1 ilg  staff  853169 Jan 28 22:40 xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     110 Jan 28 22:40 xpack-pkg-config-0.29.2-1-darwin-x64.tar.gz.sha
+total 1688
+-rw-r--r--  1 ilg  staff  859095 Sep  6 10:02 xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff     110 Sep  6 10:02 xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -260,8 +260,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/pkg-config-xpack.git/build/darwin-arm64/deploy
 total 1696
--rw-r--r--  1 ilg  staff  860987 Jan 28 22:41 xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     112 Jan 28 22:41 xpack-pkg-config-0.29.2-1-darwin-arm64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  861270 Sep  6 10:02 xpack-pkg-config-0.29.2-3-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff     112 Sep  6 10:02 xpack-pkg-config-0.29.2-3-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -296,8 +296,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/pkg-config-xpack.git/build/linux-x64/deploy
 total 860
--rw-r--r-- 1 ilg ilg 874508 Jan 28 20:41 xpack-pkg-config-0.29.2-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg    109 Jan 28 20:41 xpack-pkg-config-0.29.2-1-linux-x64.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 875405 Sep  6 07:02 xpack-pkg-config-0.29.2-3-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg    109 Sep  6 07:02 xpack-pkg-config-0.29.2-3-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Intel Windows binaries
@@ -334,8 +334,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/pkg-config-xpack.git/build/linux-arm64/deploy
 total 860
--rw-r--r-- 1 ilg ilg 874685 Jan 28 20:43 xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg    111 Jan 28 20:43 xpack-pkg-config-0.29.2-1-linux-arm64.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 875919 Sep  6 07:05 xpack-pkg-config-0.29.2-3-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg    111 Sep  6 07:05 xpack-pkg-config-0.29.2-3-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -368,8 +368,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/xpack-dev-tools/pkg-config-xpack.git/build/linux-arm/deploy
 total 844
--rw-r--r-- 1 ilg ilg 860054 Jan 28 20:44 xpack-pkg-config-0.29.2-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg    109 Jan 28 20:44 xpack-pkg-config-0.29.2-1-linux-arm.tar.gz.sha
+-rw-r--r-- 1 ilg ilg 860157 Sep  6 07:05 xpack-pkg-config-0.29.2-3-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg    109 Sep  6 07:05 xpack-pkg-config-0.29.2-3-linux-arm.tar.gz.sha
 ```
 
 ### Update README-MAINTAINER listing output
