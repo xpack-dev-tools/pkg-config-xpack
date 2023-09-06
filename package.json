@@ -60,7 +60,7 @@
       "pkg-config": "./.content/bin/pkg-config"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^1.11.1"
+      "@xpack-dev-tools/xbb-helper": "^1.11.2"
     },
     "properties": {
       "appName": "pkg-config",
