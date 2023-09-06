@@ -2,9 +2,20 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-09-06
+
+* v0.29.2-3.1 published on npmjs.com
+* d0faa51 README updates
+* d8de80f .vscode/settings.json: ignoreWords
+* 7c122f7 package.json: update urls for 0.29.2-3.1 release
+* 7f388c0 README updates
+* c193fc7 .vscode/settings.json: ignoreWords
+* 3946d1b templates/jekyll update
+* e92a1c6 package.json: bump deps
+
 ## 2023-09-05
 
-* v0.29.2-3 prepared
+* 8a065b1 prepare v0.29.2-3
 * eea61d1 dot.*ignore update
 * 32393a3 re-generate workflows
 * 2773827 READMEs update
