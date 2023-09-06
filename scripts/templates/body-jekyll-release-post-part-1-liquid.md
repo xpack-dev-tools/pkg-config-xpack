@@ -8,7 +8,7 @@ summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fix
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
 
 pkg_config_version: "0.29.2"
-pkg_config_date: "2017-03-20"
+pkg_config_date: "20 Mar 2017"
 
 version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: "1"
