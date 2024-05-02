@@ -141,7 +141,9 @@
     "buildConfigurations": {
       "common-dependencies": {
         "hidden": true,
-        "devDependencies": {}
+        "devDependencies": {
+          "@xpack-dev-tools/m4": "1.4.19-3.1"
+        }
       },
       "common-actions": {
         "hidden": true,
