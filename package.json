@@ -142,6 +142,7 @@
       "common-dependencies": {
         "hidden": true,
         "devDependencies": {
+          "@xpack-dev-tools/bison": "3.8.2-1.1",
           "@xpack-dev-tools/m4": "1.4.19-3.1"
         }
       },
