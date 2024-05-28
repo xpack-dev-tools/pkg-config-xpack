@@ -20,16 +20,15 @@ and provides the platform specific binaries for the
 [xPack pkg-config](https://xpack.github.io/pkg-config/).
 
 This distribution follows the official
-[pkg-config](https://pkgconfig.freedesktop.org/releases/) releases.
+[pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/) releases.
 
 The binaries can be installed automatically as **binary xPacks** or manually as
 **portable archives**.
 
 ## Release schedule
 
-This distribution is generally one minor release behind the upstream releases.
-In practical terms, when the minor release number changes, it awaits a few
-more weeks to get the latest patch release.
+The xPack pkg-config release schedule generally follows the upstream
+[releases](https://pkgconfig.freedesktop.org/releases/).
 
 ## User info
 
