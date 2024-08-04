@@ -187,13 +187,13 @@ xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 
 xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 For a debug build:
 
 ```sh
-xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 The build takes about 30 minutes.
@@ -220,7 +220,7 @@ xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 \
 xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run build-develop --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -255,7 +255,7 @@ xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 \
 xpm run deep-clean --config darwin-arm64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm install --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run build-develop --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run build-development --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -292,7 +292,7 @@ xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run deep-clean --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run docker-prepare --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-build-develop --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run docker-build-development --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -331,7 +331,7 @@ xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run deep-clean --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run docker-prepare --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-build-develop --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run docker-build-development --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -366,7 +366,7 @@ xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run deep-clean --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run docker-prepare --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
 xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-build-develop --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run docker-build-development --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -398,8 +398,8 @@ or even in the libraries functions.
 
 For these cases, the build script accepts the `--debug` options.
 
-There are also xPack actions that use this option (`build-develop-debug`
-and `docker-build-develop-debug`).
+There are also xPack actions that use this option (`build-development-debug`
+and `docker-build-development-debug`).
 
 ### Files cache
 
