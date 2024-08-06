@@ -1,0 +1,182 @@
+---
+title:  xPack pkg-config v0.29.2-3 released
+
+date: 2023-09-06 10:28:57 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+pkg_config_version: "0.29.2"
+pkg_config_date: "20 Mar 2017"
+
+version: "0.29.2-3"
+npm_subversion: "1"
+
+download_url: https://github.com/xpack-dev-tools/pkg-config-xpack/releases/tag/v0.29.2-3/
+
+---
+
+Version **0.29.2-3** is a maintenance release, built with the latest tools.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+
+[The xPack pkg-config](https://xpack.github.io/pkg-config/)
+is a standalone cross-platform binary distribution of
+[pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/).
+
+There are separate binaries for
+**macOS** (Intel 64-bit, Apple Silicon 64-bit)
+and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={ frontMatter.download_url }>GitHub Releases</a>.
+
+## Prerequisites
+
+- GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
+  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
+  Fedora 29 or later, etc)
+- GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
+  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
+  Fedora 29 or later, etc)
+- Intel macOS 64-bit: 10.13 or later
+- Apple Silicon macOS 64-bit: 11.6 or later
+
+## Install
+
+The full details of installing the **xPack pkg-config** on various platforms
+are presented in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The xPack pkg-config generally follows the official
+[pkg-config](https://pkgconfig.freedesktop.org/releases/) releases.
+
+The current version is based on:
+
+- pkg-config version { frontMatter.pkg_config_version }
+from { frontMatter.pkg_config_date }.
+
+## Changes
+
+Compared to the upstream version, there are no functional changes.
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The original documentation is available
+[online](https://people.freedesktop.org/~dbn/pkg-config-guide.html).
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+For the prerequisites and more details on the build procedure, please see the
+[Maintainer Info](/docs/maintainer-info/) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/pkg-config-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+2e21e286333fac1d354962a5cd3095fefd3943fccfb0c95c0bc313dce92696e1
+xpack-pkg-config-0.29.2-3-darwin-arm64.tar.gz
+
+f3e71ebd7911e712e047ca86026e00765cad43c483f0615b2b2f0cb75afd6eb0
+xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz
+
+885c2ef23a3bde8122e03c05ac030de4163dc4e9086573ad7af2a1e763551c3f
+xpack-pkg-config-0.29.2-3-linux-arm.tar.gz
+
+53acb139607b976e185bc15ff21adf033aebb656f6534ccfce4a8eb777a17ec2
+xpack-pkg-config-0.29.2-3-linux-arm64.tar.gz
+
+b21353e97e411a5eec4761d71c05ab6ac84f1c8d8748a91f06b823fee62513f8
+xpack-pkg-config-0.29.2-3-linux-x64.tar.gz
+
+```
+
+## Deprecation notices
+
+### 32-bit support
+
+Support for 32-bit Intel Linux and Intel Windows was
+dropped in 2022. Support for 32-bit Arm Linux (armv7l) will be preserved
+for a while, due to the large user base of 32-bit Raspberry Pi systems.
+
+### Linux minimum requirements
+
+Support for RedHat 7 was dropped in 2022 and the
+minimum requirement was raised to GLIBC 2.27, available starting
+with Ubuntu 18, Debian 10 and RedHat 8.
+
+## Pre-deprecation notice for Ubuntu 18.04
+
+Ubuntu 18.04 LTS _Bionic Beaver_ reached the end of the standard five-year
+maintenance window for Long-Term Support (LTS) release on 31 May 2023.
+
+As a courtesy, the xPack GNU/Linux releases will continue to be based on
+Ubuntu 18.04 for another year.
+
+From 2025 onwards, the GNU/Linux binaries will be built on **Debian 10**,
+(**GLIBC 2.28**), and are also expected to run on RedHat 8.
+
+Users are urged to update their build and test infrastructure to
+ensure a smooth transition to the next xPack releases.
+
+## Download analytics
+
+- GitHub [xpack-dev-tools/pkg-config-xpack](https://github.com/xpack-dev-tools/pkg-config-xpack/)
+  - this release <a href={ `https://github.com/xpack-dev-tools/pkg-config-xpack/releases/v${ frontMatter.version }/` } ><Image img={ `https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/v${ frontMatter.version }/total.svg` } alt='Github Release' /></a>
+  - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/total.svg)](https://github.com/xpack-dev-tools/pkg-config-xpack/releases/)
+  - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=pkg-config-xpack) (grouped per release)
+- npmjs.com [@xpack-dev-tools/pkg-config](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config)
+  - latest releases [![npm](https://img.shields.io/npm/dw/@xpack-dev-tools/pkg-config.svg)](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config/)
+  - all @xpack-dev-tools releases [![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/pkg-config.svg)](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config/)
+
+Credit to [Shields IO](https://shields.io) for the badges and to
+[Somsubhra/github-release-stats](https://github.com/Somsubhra/github-release-stats)
+for the individual file counters.

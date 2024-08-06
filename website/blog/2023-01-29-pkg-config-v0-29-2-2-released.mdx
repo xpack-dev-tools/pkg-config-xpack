@@ -1,0 +1,171 @@
+---
+title:  xPack pkg-config v0.29.2-2 released
+
+date: 2023-01-29 12:11:22 +0200
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+pkg_config_version: 0.29.2
+pkg_config_date: 2017-03-20
+version: "0.29.2-2"
+npm_subversion: 1
+
+download_url: https://github.com/xpack-dev-tools/pkg-config-xpack/releases/tag/v0.29.2-2/
+
+---
+
+Version **0.29.2-2** is a maintenance release, built with the latest build scripts.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+
+[The xPack pkg-config](https://xpack-dev-tools.github.io/pkg-config-xpack)
+is a standalone cross-platform binary distribution of
+[pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/).
+
+There are separate binaries for
+**macOS** (Intel 64-bit, Apple Silicon 64-bit)
+and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
+
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
+
+## Download
+
+The binary files are available from <a href={ frontMatter.download_url }>GitHub Releases</a>.
+
+## Prerequisites
+
+- GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
+  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
+  Fedora 29 or later, etc)
+- GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
+  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
+  Fedora 29 or later, etc)
+- Intel macOS 64-bit: 10.13 or later
+- Apple Silicon macOS 64-bit: 11.6 or later
+
+## Install
+
+The full details of installing the **xPack pkg-config** on various platforms
+are presented in the [Install Guide](/docs/install/).
+
+## Compliance
+
+The xPack pkg-config generally follows the official
+[pkg-config](https://pkgconfig.freedesktop.org/releases/) releases.
+
+The current version is based on:
+
+- pkg-config version { frontMatter.pkg_config_version }
+from { frontMatter.pkg_config_date }.
+
+## Changes
+
+Compared to the upstream version, there are no functional changes.
+
+## Bug fixes
+
+- none
+
+## Enhancements
+
+- none
+
+## Known problems
+
+- none
+
+## Documentation
+
+The original documentation is available
+[online](https://people.freedesktop.org/~dbn/pkg-config-guide.html).
+
+## Build
+
+The binaries for all supported platforms
+(Windows, macOS and GNU/Linux) were built using the
+[xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
+of build environments based on slightly older distributions, that should be
+compatible with most recent systems.
+
+The scripts used to build this distribution are in:
+
+- `distro-info/scripts`
+
+For the prerequisites and more details on the build procedure, please see the
+[README-MAINTAINER](https://github.com/xpack-dev-tools/pkg-config-xpack/blob/xpack/README-MAINTAINER.md) page.
+
+## CI tests
+
+Before publishing, a set of simple tests were performed on an exhaustive
+set of platforms. The results are available from:
+
+- [GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions/)
+- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/pkg-config-xpack/builds/)
+
+## Tests
+
+TBD
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+1e4e7f29ef49ba7484b543396eace71a50b50d1fc4b12a59e35cb3853239c87d
+xpack-pkg-config-0.29.2-2-darwin-arm64.tar.gz
+
+cb3f7795395750c6d941ce171713ac833c5c3860aaf54925ab05bbb59944ef87
+xpack-pkg-config-0.29.2-2-darwin-x64.tar.gz
+
+904658d86cfe36db0bd59423bb78517aebb2c5e7458d98ae2c39ee52fbabf0a4
+xpack-pkg-config-0.29.2-2-linux-arm.tar.gz
+
+9b593c297e328b0a35a25a2eb2e2dfbcc4b5eb2510dbb307143980a733a36278
+xpack-pkg-config-0.29.2-2-linux-arm64.tar.gz
+
+2fc1e3db9f7a94b99d003e5b882a6c3bf1c30ff1faea7e921c111f1be06baf60
+xpack-pkg-config-0.29.2-2-linux-x64.tar.gz
+
+```
+
+## Deprecation notices
+
+### 32-bit support
+
+Support for 32-bit Intel Linux and Intel Windows was
+dropped in 2022. Support for 32-bit Arm Linux (armv7l) will be preserved
+for a while, due to the large user base of 32-bit Raspberry Pi systems.
+
+### Linux minimum requirements
+
+Support for RedHat 7 was dropped in 2022 and the
+minimum requirement was raised to GLIBC 2.27, available starting
+with Ubuntu 18, Debian 10 and RedHat 8.
+
+## Download analytics
+
+- GitHub [xpack-dev-tools/pkg-config-xpack](https://github.com/xpack-dev-tools/pkg-config-xpack/)
+  - this release <a href={ `https://github.com/xpack-dev-tools/pkg-config-xpack/releases/v${ frontMatter.version }/` } ><Image img={ `https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/v${ frontMatter.version }/total.svg` } alt='Github Release' /></a>
+  - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/total.svg)](https://github.com/xpack-dev-tools/pkg-config-xpack/releases/)
+  - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=pkg-config-xpack) (grouped per release)
+- npmjs.com [@xpack-dev-tools/pkg-config](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config)
+  - latest releases [![npm](https://img.shields.io/npm/dw/@xpack-dev-tools/pkg-config.svg)](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config/)
+  - all @xpack-dev-tools releases [![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/pkg-config.svg)](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config/)
+
+Credit to [Shields IO](https://shields.io) for the badges and to
+[Somsubhra/github-release-stats](https://github.com/Somsubhra/github-release-stats)
+for the individual file counters.
