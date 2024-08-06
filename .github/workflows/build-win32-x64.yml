@@ -1,5 +1,6 @@
 # -----------------------------------------------------------------------------
-# DO NOT EDIT! Generated from xpacks/@xpack-dev-tools/xbb-helper/templates/*.
+# DO NOT EDIT!
+# Generated from xpacks/@xpack-dev-tools/xbb-helper/templates/workflows/*.
 #
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -59,6 +60,6 @@ on:
       helper-git-ref:
         description: 'The helper branch, tag or SHA to checkout'
         required: false
-        default: 'xpack-develop'
+        default: 'xpack-development'
 
 jobs:
