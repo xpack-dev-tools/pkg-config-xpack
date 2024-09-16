@@ -7,12 +7,13 @@
   "xpack": {
     "minimumXpmRequired": "0.16.3",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^3.0.7"
+      "@xpack-dev-tools/xbb-helper": "^3.0.3"
     },
     "properties": {
       "appName": "pkg-config",
       "appLcName": "pkg-config",
       "platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64",
+      "LIQUIDJS": "liquidjs --context '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLcName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
       "commandBashBuild": "bash {{ properties.dbg }} scripts/build.sh --target {{ configuration.name }} --build-folder {{ properties.buildFolderRelativePathPosix }}",
@@ -43,6 +44,8 @@
       "generate-workflows": "bash xpacks/@xpack-dev-tools/xbb-helper/maintainer-scripts/generate-workflows.sh",
       "website-generate-commons": "bash xpacks/@xpack-dev-tools/xbb-helper/maintainer-scripts/website-generate-commons.sh",
       "website-import-releases": "bash xpacks/@xpack-dev-tools/xbb-helper/maintainer-scripts/website-import-releases.sh",
+      "check-space": "{% if os.platform == 'darwin' %}df -gH /{% else %}df -BG -H /{% endif %}",
+      "clear-all-projects-builds": "rm -rf ~/Work/xpack-dev-tools/*/build-assets/build",
       "trigger-workflow-build-darwin-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-x64.yml --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
       "trigger-workflow-build-darwin-arm64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-darwin-arm64.yml --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
       "trigger-workflow-build-linux-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-x64.yml --xpm-version {{ properties.xpm-version }} --loglevel {{ properties.xpm-install-loglevel }}",
@@ -73,7 +76,8 @@
         "hidden": true,
         "devDependencies": {
           "@xpack-dev-tools/bison": "3.8.2-1.1",
-          "@xpack-dev-tools/m4": "1.4.19-3.1"
+          "@xpack-dev-tools/m4": "1.4.19-3.1",
+          "@xpack-dev-tools/pkg-config": "0.29.2-3.1"
         }
       },
       "common-actions": {
