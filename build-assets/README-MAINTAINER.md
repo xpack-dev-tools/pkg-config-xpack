@@ -40,7 +40,7 @@ git clone \
 Or, if the repo was already cloned:
 
 ```sh
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull
 ```
 
 ## Get helper sources
@@ -176,24 +176,24 @@ export XBB_ENVIRONMENT_SKIP_CHECKS="y"
 
 # Update the build scripts.
 rm -f ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull
 
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
 
-xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 
-xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 For a debug build:
 
 ```sh
-xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 The build takes about 30 minutes.
@@ -212,15 +212,15 @@ Repeat the same steps as before.
 
 ```sh
 rm -f ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json && \
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull && \
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 \
-xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run deep-clean --config darwin-x64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -247,15 +247,15 @@ Update the build scripts (or clone them at the first use):
 
 ```sh
 rm -f ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json && \
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull && \
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 \
-xpm run deep-clean --config darwin-arm64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm install --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run build-development --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run deep-clean --config darwin-arm64  -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm install --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run build-development --config darwin-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -283,16 +283,16 @@ Update the build scripts (or clone them at the first use):
 
 ```sh
 rm -f ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json && \
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull && \
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 \
-xpm run deep-clean --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-prepare --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-build-development --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run deep-clean --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-prepare --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-link-deps --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-build-development --config linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -322,16 +322,16 @@ Update the build scripts (or clone them at the first use):
 
 ```sh
 rm -f ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json && \
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull && \
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 \
-xpm run deep-clean --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-prepare --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-build-development --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run deep-clean --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-prepare --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-build-development --config linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -357,16 +357,16 @@ Update the build scripts (or clone them at the first use):
 
 ```sh
 rm -f ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json && \
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull && \
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull && \
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git && \
-xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
 \
-xpm run deep-clean --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-prepare --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git && \
-xpm run docker-build-development --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+xpm run deep-clean --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-prepare --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run docker-build-development --config linux-arm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 Several minutes later, the output of the build script is a compressed
@@ -578,9 +578,9 @@ To download the pre-released archive for the specific platform
 and run the tests, use:
 
 ```sh
-git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull
-xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
-xpm run test-pre-release -C ~/Work/xpack-dev-tools/pkg-config-xpack.git
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets pull
+xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+xpm run test-pre-release -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 ```
 
 For even more tests, on each platform (MacOS, GNU/Linux, Windows),
