@@ -7,13 +7,16 @@
   "xpack": {
     "minimumXpmRequired": "0.16.3",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^3.0.3"
+      "@xpack-dev-tools/xbb-helper": "^3.0.16"
     },
     "properties": {
       "appName": "pkg-config",
       "appLcName": "pkg-config",
       "platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64",
-      "LIQUIDJS": "liquidjs --context '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLcName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",
+      "customFields": {
+        "programName": "bison",
+        "branding": ""
+      },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
       "commandBashBuild": "bash {{ properties.dbg }} scripts/build.sh --target {{ configuration.name }} --build-folder {{ properties.buildFolderRelativePathPosix }}",
