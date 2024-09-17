@@ -1,0 +1,60 @@
+
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+## Folder hierarchy
+
+After install, the package creates a folder hierarchy like the following
+(only the first two depth levels are shown):
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="linux" label="GNU/Linux">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/.local/xPacks/\@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/
+/home/ilg/.local/xPacks/\@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/
+├── README.md
+├── bin
+│   └── pkg-config
+├── distro-info
+│   └── licenses
+├── libexec
+│   ├── libiconv.so.2 -> libiconv.so.2.6.1
+│   └── libiconv.so.2.6.1
+└── share
+    ├── aclocal
+    └── doc
+
+7 directories, 4 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/
+├── README.md
+├── bin
+│   └── pkg-config
+├── distro-info
+│   └── licenses
+├── libexec
+│   └── libiconv.2.dylib
+└── share
+    ├── aclocal
+    └── doc
+
+8 directories, 3 files
+`} </CodeBlock>
+
+</TabItem>
+
+</Tabs>

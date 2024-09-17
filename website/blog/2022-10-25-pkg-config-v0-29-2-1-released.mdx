@@ -26,13 +26,13 @@ Version **0.29.2-1** is the first release of xPack pkg-config.
 
 import Image from '@theme/IdealImage';
 
-[The xPack pkg-config](https://xpack-dev-tools.github.io/pkg-config-xpack)
+The [xPack pkg-config](https://xpack-dev-tools.github.io/pkg-config-xpack)
 is a standalone cross-platform binary distribution of
 [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/).
 
 There are separate binaries for
-**macOS** (Intel 64-bit, Apple Silicon 64-bit)
-and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
+**macOS** (x64 and arm64)
+and **GNU/Linux** (x64, arm64 and arm).
 
 :::note Raspberry Pi
 
@@ -44,18 +44,18 @@ armv6 is not supported).
 
 ## Download
 
-The binary files are available from <a href={ frontMatter.download_url }>GitHub Releases</a>.
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Prerequisites
 
-- GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
+- x64 GNU/Linux: any system with **GLIBC 2.27** or higher
   (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
   Fedora 29 or later, etc)
-- GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
+- arm64/arm GNU/Linux: any system with **GLIBC 2.27** or higher
   (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
   Fedora 29 or later, etc)
-- Intel macOS 64-bit: 10.13 or later
-- Apple Silicon macOS 64-bit: 11.6 or later
+- x64 macOS: 10.13 or later
+- arm64 macOS: 11.6 or later
 
 ## Install
 
@@ -69,8 +69,8 @@ The xPack pkg-config generally follows the official
 
 The current version is based on:
 
-- pkg-config version { frontMatter.pkg_config_version }
-from { frontMatter.pkg_config_date }.
+- pkg-config version {frontMatter.pkg_config_version}
+from {frontMatter.pkg_config_date}.
 
 ## Changes
 
@@ -159,7 +159,7 @@ with Ubuntu 18, Debian 10 and RedHat 8.
 ## Download analytics
 
 - GitHub [xpack-dev-tools/pkg-config-xpack](https://github.com/xpack-dev-tools/pkg-config-xpack/)
-  - this release <a href={ `https://github.com/xpack-dev-tools/pkg-config-xpack/releases/v${ frontMatter.version }/` } ><Image img={ `https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/v${ frontMatter.version }/total.svg` } alt='Github Release' /></a>
+  - this release <a href={`https://github.com/xpack-dev-tools/pkg-config-xpack/releases/v${frontMatter.version}/`} ><Image img={`https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/v${frontMatter.version}/total.svg`} alt='Github Release' /></a>
   - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/pkg-config-xpack/total.svg)](https://github.com/xpack-dev-tools/pkg-config-xpack/releases/)
   - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=pkg-config-xpack) (grouped per release)
 - npmjs.com [@xpack-dev-tools/pkg-config](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config)
