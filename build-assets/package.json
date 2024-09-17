@@ -14,7 +14,7 @@
       "appLcName": "pkg-config",
       "platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64",
       "customFields": {
-        "programName": "bison",
+        "programName": "pkg-config",
         "branding": ""
       },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
