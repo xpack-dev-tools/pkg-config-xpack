@@ -1,129 +1,77 @@
 ---
 title:  xPack pkg-config v{{ XBB_RELEASE_VERSION }} released
 
-TODO: select one summary
+date: {{releaseDate}}
 
-summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes <...>."
+authors: ilg-ul
 
-summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream release."
+# To be listed in the Releases page.
+tags:
+  - releases
 
-pkg_config_version: "0.29.2"
-pkg_config_date: "20 Mar 2017"
+# ----- Custom properties -----------------------------------------------------
 
-version: "{{ XBB_RELEASE_VERSION }}"
+pkg_config_version: "{{upstreamVersion}}"
+pkg_config_release_date: "{{customFields.pkgconfigReleaseDate}}"
+
+version: "{{releaseVersion}}"
 npm_subversion: "1"
 
 download_url: https://github.com/xpack-dev-tools/pkg-config-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
-comments: true
-
-date: {{ RELEASE_DATE }}
-
-# For Jekyll releases selection.
-categories:
-  - releases
-  - pkg-config
-
-# For navigation; use scripts/createtag.sh in Jekyll.
-tags:
-  - releases
-  - pkg-config
-
 ---
+
+TODO: select one summary
+
+Version **{{releaseVersion}}** is a maintenance release; it fixes ...
+
+Version **{{releaseVersion}}** is a new release; it follows the upstream release.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
+
+import Prerequisites from './_common/_prerequisites-glib-2.27.mdx'
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.27.mdx'
+import DownloadAnalytics from './_common/_download-analytics.mdx'
 
 The [xPack pkg-config](https://xpack-dev-tools.github.io/pkg-config-xpack/)
 is a standalone cross-platform binary distribution of
 [pkg-config](https://www.freedesktop.org/wiki/Software/pkg-config/).
 
 There are separate binaries for
-**macOS** (Intel 64-bit, Apple Silicon 64-bit)
-and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
+**macOS** (x64 and arm64)
+and **GNU/Linux** (x64, arm64 and arm).
 
-{% raw %}{% include note.html content="The main targets for the Arm binaries
-are the **Raspberry Pi** class devices (armv7l and aarch64;
-armv6 is not supported)." %}{% endraw %}
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
 
 ## Download
 
-The binary files are available from GitHub [Releases]({% raw %}{{ page.download_url }}{% endraw %}).
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
-## Prerequisites
-
-- GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
-  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
-  Fedora 29 or later, etc)
-- GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
-  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
-  Fedora 29 or later, etc)
-- Intel macOS 64-bit: 10.13 or later
-- Apple Silicon macOS 64-bit: 11.6 or later
+<Prerequisites/>
 
 ## Install
 
-The full details of installing the **xPack pkg-config** on various platforms
-are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/pkg-config/install/) page.
-
-### Easy install
-
-The easiest way to install pkg-config is with
-[`xpm`]({% raw %}{{ site.baseurl }}{% endraw %}/xpm/)
-by using the **binary xPack**, available as
-[`@xpack-dev-tools/pkg-config`](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config)
-from the [`npmjs.com`](https://www.npmjs.com) registry.
-
-With the `xpm` tool available, installing
-the latest version of the package and adding it as
-a development dependency for a project is quite easy:
-
-```sh
-cd my-project
-xpm init # Add a package.json if not already present
-
-xpm install @xpack-dev-tools/pkg-config@latest --verbose
-
-ls -l xpacks/.bin
-```
-
-To install this specific version, use:
-
-```sh
-xpm install @xpack-dev-tools/pkg-config@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
-```
-
-It is also possible to install Meson Build globally, in the user home folder,
-but this requires xPack aware tools to automatically identify them and
-manage paths.
-
-```sh
-xpm install --global @xpack-dev-tools/pkg-config@latest --verbose
-```
-
-### Uninstall
-
-To remove the links created by xpm in the current project:
-
-```sh
-cd my-project
-
-xpm uninstall @xpack-dev-tools/pkg-config
-```
-
-To completely remove the package from the central xPack store:
-
-```sh
-xpm uninstall --global @xpack-dev-tools/pkg-config
-```
+The full details of installing the **xPack pkg-config**
+on various platforms are presented in the [Install Guide](/docs/install/).
 
 ## Compliance
 
-The xPack pkg-config generally follows the official
-[pkg-config](https://pkgconfig.freedesktop.org/releases/) releases.
+The **xPack pkg-config** is based on the official
+[pkg-config](https://pkgconfig.freedesktop.org/releases/) sources.
 
 The current version is based on:
 
-- pkg-config version {% raw %}{{ page.pkg_config_version }}{% endraw %}
-from {% raw %}{{ page.pkg_config_date }}{% endraw %}.
+- pkg-config version {frontMatter.pkg_config_version}
+from {frontMatter.pkg_config_release_date}.
 
 ## Changes
 
@@ -141,40 +89,12 @@ Compared to the upstream version, there are no functional changes.
 
 - none
 
-## Shared libraries
-
-On all platforms the packages are standalone, and expect only the standard
-runtime to be present on the host.
-
-All dependencies that are build as shared libraries are copied locally
-in the `libexec` folder (or in the same folder as the executable for Windows).
-
-### `DT_RPATH` and `LD_LIBRARY_PATH`
-
-On GNU/Linux the binaries are adjusted to use a relative path:
-
-```console
-$ readelf -d library.so | grep runpath
- 0x000000000000001d (RPATH)            Library rpath: [$ORIGIN]
-```
-
-In the GNU ld.so search strategy, the `DT_RPATH` has
-the highest priority, higher than `LD_LIBRARY_PATH`, so if this later one
-is set in the environment, it should not interfere with the xPack binaries.
-
-Please note that previous versions, up to mid-2020, used `DT_RUNPATH`, which
-has a priority lower than `LD_LIBRARY_PATH`, and does not tolerate setting
-it in the environment.
-
-### `@rpath` and `@loader_path`
-
-Similarly, on macOS, the binaries are adjusted with `install_name_tool` to use a
-relative path.
-
 ## Documentation
 
-The original documentation is available
-[online](https://people.freedesktop.org/~dbn/pkg-config-guide.html).
+The original documentation is available from
+the project web site:
+
+- https://people.freedesktop.org/~dbn/pkg-config-guide.html
 
 ## Build
 
