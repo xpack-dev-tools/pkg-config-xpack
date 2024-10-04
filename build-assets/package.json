@@ -17,7 +17,8 @@
         "programName": "pkg-config",
         "branding": "",
         "$link": "https://pkgconfig.freedesktop.org/releases/",
-        "pkgconfigReleaseDate": "20 Mar 2017"
+        "pkgconfigReleaseDate": "20 Mar 2017",
+        "isSecondaryTool": "true"
       },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
