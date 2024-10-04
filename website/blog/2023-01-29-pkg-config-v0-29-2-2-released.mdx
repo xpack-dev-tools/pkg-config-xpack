@@ -25,6 +25,7 @@ Version **0.29.2-2** is a maintenance release, built with the latest build scrip
 <!-- truncate -->
 
 import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
 The [xPack pkg-config](https://xpack-dev-tools.github.io/pkg-config-xpack)
 is a standalone cross-platform binary distribution of
@@ -59,8 +60,14 @@ The binary files are available from <a href={frontMatter.download_url}>GitHub Re
 
 ## Install
 
-The full details of installing the **xPack pkg-config** on various platforms
-are presented in the [Install Guide](/docs/install/).
+The easiest way to install this specific version, is by using **xpm**:
+
+<CodeBlock language="console"> {
+`xpm install @xpack-dev-tools/pkg-config@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`} </CodeBlock>
+
+Comprehensive instructions for installing **xPack pkg-config** on different platforms
+can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
 
@@ -146,11 +153,11 @@ xpack-pkg-config-0.29.2-2-linux-x64.tar.gz
 
 ### 32-bit support
 
-Support for 32-bit Intel Linux and Intel Windows was
-dropped in 2022. Support for 32-bit Arm Linux (armv7l) will be preserved
+Support for 32-bit x86 GNU/Linux and x86 Windows was
+dropped in 2022. Support for 32-bit Arm GNU/Linux (armv7l) will be preserved
 for a while, due to the large user base of 32-bit Raspberry Pi systems.
 
-### Linux minimum requirements
+### GNU/Linux minimum requirements
 
 Support for RedHat 7 was dropped in 2022 and the
 minimum requirement was raised to GLIBC 2.27, available starting
