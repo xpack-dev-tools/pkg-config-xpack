@@ -25,6 +25,9 @@
 # -----------------------------------------------------------------------------
 
 
+
+
+
 name: 'Test xPack pkg-config via xpm'
 
 on:
@@ -44,6 +47,7 @@ on:
         default: 'xpack-development'
 
 jobs:
+
 
   linux-x64-test:
     name: 'linux-x64 pkg-config@${{github.event.inputs.version}} test'
@@ -77,6 +81,9 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: /github/workspace/build-assets/scripts/test.sh --image debian --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
+
+
+
 
 
   linux-arm64-test:
@@ -119,6 +126,9 @@ jobs:
           args: /github/workspace/build-assets/scripts/test.sh --image debian --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
 
 
+
+
+
   linux-arm-test:
     name: 'linux-arm pkg-config@${{github.event.inputs.version}} test'
     runs-on: [self-hosted, linux, arm, xbbla32]
@@ -157,6 +167,9 @@ jobs:
         with:
           entrypoint: /bin/bash # /usr/bin/linux32
           args: /github/workspace/build-assets/scripts/test.sh --image debian --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
+
+
+
 
 
   darwin-x64-test:
@@ -203,6 +216,9 @@ jobs:
         run: bash build-assets/scripts/test.sh --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
 
 
+
+
+
   darwin-arm64-test:
     name: 'darwin-arm64 pkg-config@${{github.event.inputs.version}} test'
     runs-on: macos-14
@@ -245,6 +261,10 @@ jobs:
 
       - name: 'Run ${{github.event.inputs.version}} xpm test'
         run: bash build-assets/scripts/test.sh --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
+
+
+
+
 
 
 # -----------------------------------------------------------------------------

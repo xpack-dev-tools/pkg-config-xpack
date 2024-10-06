@@ -24,6 +24,9 @@
 # -----------------------------------------------------------------------------
 
 
+
+
+
 name: 'Deep clean xPack pkg-config'
 
 on:
@@ -35,6 +38,7 @@ on:
         default: 'current'
 
 jobs:
+
 
   linux-x64:
     name: 'linux-x64 pkg-config ${{github.event.inputs.version}} clean'
@@ -54,6 +58,21 @@ jobs:
         run: |
           chmod -Rf a+w * || true
           rm -rf * .git*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -81,6 +100,9 @@ jobs:
 
 
 
+
+
+
   linux-arm64:
     name: 'linux-arm64 pkg-config ${{github.event.inputs.version}} clean'
     timeout-minutes: 2880 # 2 days
@@ -99,6 +121,13 @@ jobs:
         run: |
           chmod -Rf a+w * || true
           rm -rf * .git*
+
+
+
+
+
+
+
 
 
 
@@ -125,6 +154,15 @@ jobs:
 
 
 
+
+
+
+
+
+
+
+
+
   darwin-arm64:
     name: 'darwin-arm64 pkg-config ${{github.event.inputs.version}} clean'
     timeout-minutes: 2880 # 2 days
@@ -145,3 +183,4 @@ jobs:
         run: |
           chmod -Rf a+w * || true
           rm -rf * .git*
+
