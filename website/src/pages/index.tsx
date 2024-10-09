@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`Hello from xPack Binary Development Tools`}
-      description="A binary xPack with the pkg-config executables">
+      description="A binary package with the pkg-config executables">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
