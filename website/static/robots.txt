@@ -1,0 +1,7 @@
+Sitemap: https://xpack-dev-tools.github.io/pkg-config-xpack/sitemap.xml
+
+User-agent: *
+Disallow: /pkg-config-xpack/blog/archive/
+Disallow: /pkg-config-xpack/blog/authors/
+Disallow: /pkg-config-xpack/blog/page/
+Disallow: /pkg-config-xpack/blog/tags/
