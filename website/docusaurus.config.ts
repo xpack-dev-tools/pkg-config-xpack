@@ -89,7 +89,8 @@ console.log('customFields: ' + util.inspect(customFields));
 // ----------------------------------------------------------------------------
 
 const config: Config = {
-  title: 'xPack pkg-config',
+  title: 'xPack pkg-config' +
+    ((process.env.DOCUSAURUS_IS_PREVIEW === 'true') ? ' (preview)' : ''),
   tagline: 'A binary distribution of pkg-config',
   // Explicitly set in headTags.
   // favicon: '/img/favicon.ico',
@@ -260,7 +261,7 @@ const config: Config = {
       items: [
         {
           to: '/',
-          // label: 'Home',
+          label: 'pkg-config',
           className: 'header-home-link',
           position: 'left'
         },
