@@ -4,9 +4,14 @@
   "description": "A binary xpm package with the pkg-config executable",
   "main": "",
   "scripts": {
-    "postversion": "git push origin --all && git push origin --tags",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "liquidjs": "liquidjs"
+    "generate-top-commons": "bash node_modules/@xpack/npm-packages-helper/maintenance-scripts/generate-top-commons.sh --xpack-dev-tools",
+    "npm-install": "npm install",
+    "npm-link-helpers": "npm link @xpack/npm-packages-helper @xpack/docusaurus-template-liquid",
+    "npm-outdated": "npm outdated",
+    "npm-pack": "npm pack",
+    "npm-link": "npm link",
+    "deep-clean": "del-cli node_modules package-lock.json *.tgz",
+    "postversion": "git push origin --all && git push origin --tags"
   },
   "repository": {
     "type": "git",
@@ -59,5 +64,16 @@
     "bin": {
       "pkg-config": "./.content/bin/pkg-config"
     }
+  },
+  "devDependencies": {
+    "del-cli": "^6.0.0",
+    "json": "^11.0.0",
+    "liquidjs": "^10.19.1"
+  },
+  "topConfig": {
+    "longName": "pkg-config"
+  },
+  "engines": {
+    "node": " >=18.0.0"
   }
 }
