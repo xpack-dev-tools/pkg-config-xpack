@@ -5,7 +5,7 @@
 
 # The xPack pkg-config
 
-A standalone, cross-platform (GNU/Linux, macOS) binary distribution of pkg-config,
+A standalone, cross-platform (macOS, GNU/Linux) binary distribution of pkg-config,
 intended for reproducible builds.
 
 ## Project documentation
