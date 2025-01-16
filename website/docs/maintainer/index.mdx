@@ -271,7 +271,7 @@ will build again the previous release!
 
 ## Run the development builds
 
-The builds currently run on 5 dedicated machines (x64 GNU/Linux, arm64 GNU/Linux, arm GNU/Linux, x64 macOS, arm64 macOS).
+The builds currently run on 5 dedicated machines (x64 macOS, arm64 macOS, x64 GNU/Linux, arm64 GNU/Linux, arm GNU/Linux).
 
 Before the real build, run test/development builds on all platforms.
 
@@ -432,7 +432,7 @@ Commit with the message _**website: update folder hierarchies**_.
 ### Update the list of links in top package.json
 
 Copy/paste the full list of links displayed at the end of the build, in
-sequence, for each platform (GNU/Linux, macOS),
+sequence, for each platform (macOS, GNU/Linux),
 and check the
 differences compared to the repository.
 
@@ -467,14 +467,14 @@ The automation is provided by GitHub Actions and three self-hosted runners.
 ### Start the self-hosted runners
 
 - on the development machine (`wksi`) open
-ssh sessions to the build machines (`xbbli`, `xbbla`, `xbbla32`, `xbbmi`, `xbbma`):
+ssh sessions to the build machines (`xbbmi`, `xbbma`, `xbbli`, `xbbla`, `xbbla32`):
 
 ```sh
+caffeinate ssh xbbmi
+caffeinate ssh xbbma
 caffeinate ssh xbbli
 caffeinate ssh xbbla
 caffeinate ssh xbbla32
-caffeinate ssh xbbmi
-caffeinate ssh xbbma
 ```
 
 Create a `screen` session, to provide a persistent standard output for

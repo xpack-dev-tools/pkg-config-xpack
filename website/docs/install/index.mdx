@@ -251,7 +251,7 @@ To install a **specific version**, specify it explicitly:
 
 <Tabs groupId="operating-systems">
 
-<TabItem value="linux" label="GNU/Linux">
+<TabItem value="macos" label="macOS">
 
 The main result is a set
 of links in
@@ -274,7 +274,7 @@ export PATH=<...project-path...>/xpacks/.bin:$PATH
 
 </TabItem>
 
-<TabItem value="macos" label="macOS">
+<TabItem value="linux" label="GNU/Linux">
 
 The main result is a set
 of links in
@@ -402,18 +402,18 @@ the project build configurations need a PATH adjustment:
 
 <Tabs groupId="operating-systems">
 
-<TabItem value="linux" label="GNU/Linux">
-
-<CodeBlock language="sh"> {
-`export PATH=$HOME/.local/xPacks/@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/bin:$PATH
-`} </CodeBlock>
-
-</TabItem>
-
 <TabItem value="macos" label="macOS">
 
 <CodeBlock language="sh"> {
 `export PATH=$HOME/Library/xPacks/\@pack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/bin:$PATH
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<CodeBlock language="sh"> {
+`export PATH=$HOME/.local/xPacks/@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/bin:$PATH
 `} </CodeBlock>
 
 </TabItem>
@@ -458,17 +458,17 @@ For a thorough clean-up, please note that **xpm** uses only two folders:
 
 <Tabs groupId="operating-systems">
 
-<TabItem value="linux" label="GNU/Linux">
-
-- `${HOME}/.local/xPacks`
-- `${HOME}/.cache/xPacks`
-
-</TabItem>
-
 <TabItem value="macos" label="macOS">
 
 - `${HOME}/Library/xPacks`
 - `${HOME}/Library/Caches/xPacks`
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+- `${HOME}/.local/xPacks`
+- `${HOME}/.cache/xPacks`
 
 </TabItem>
 
@@ -495,38 +495,6 @@ the <a href={`https://github.com/xpack-dev-tools/pkg-config-xpack/releases/`}>Gi
 ### Download & unpack {#manual-install-download-and-unpack}
 
 <Tabs groupId="operating-systems">
-
-<TabItem value="linux" label="GNU/Linux">
-
-The GNU/Linux versions of **xPack pkg-config**
-are packed as `.tar.gz` archives.
-Download the latest version named like:
-
-- <code>xpack-pkg-config-{customField('xpackVersion')}-linux-x64.tar.gz</code>- <code>xpack-pkg-config-{customField('xpackVersion')}-linux-arm64.tar.gz</code>- <code>xpack-pkg-config-{customField('xpackVersion')}-linux-arm.tar.gz</code>
-
-:::note
-
-In case you wonder where the suffix comes
-from, it is exactly the Node.js `process.platform` and `process.arch`.
-
-:::
-
-To manually install the <b>xPack pkg-config</b>,
-unpack the archive and move it to a location of your choice.
-
-The recommended location is
-the <code>~/.local/xPacks/pkg-config</code> folder, for
-example <code>/home/ilg/.local/xPacks/pkg-config/xpack-pkg-config-{customField('xpackVersion')}</code>:
-
-<CodeBlock language="console"> {
-`mkdir -p ~/.local/xPacks/pkg-config
-cd ~/.local/xPacks/pkg-config
-
-tar xvf ~/Downloads/xpack-pkg-config-${customField('xpackVersion')}-linux-x64.tar.gz
-chmod -R -w xpack-pkg-config-${customField('xpackVersion')}
-`} </CodeBlock>
-
-</TabItem>
 
 <TabItem value="macos" label="macOS">
 
@@ -560,6 +528,38 @@ chmod -R -w xpack-pkg-config-${customField('xpackVersion')}
 
 </TabItem>
 
+<TabItem value="linux" label="GNU/Linux">
+
+The GNU/Linux versions of **xPack pkg-config**
+are packed as `.tar.gz` archives.
+Download the latest version named like:
+
+- <code>xpack-pkg-config-{customField('xpackVersion')}-linux-x64.tar.gz</code>- <code>xpack-pkg-config-{customField('xpackVersion')}-linux-arm64.tar.gz</code>- <code>xpack-pkg-config-{customField('xpackVersion')}-linux-arm.tar.gz</code>
+
+:::note
+
+In case you wonder where the suffix comes
+from, it is exactly the Node.js `process.platform` and `process.arch`.
+
+:::
+
+To manually install the <b>xPack pkg-config</b>,
+unpack the archive and move it to a location of your choice.
+
+The recommended location is
+the <code>~/.local/xPacks/pkg-config</code> folder, for
+example <code>/home/ilg/.local/xPacks/pkg-config/xpack-pkg-config-{customField('xpackVersion')}</code>:
+
+<CodeBlock language="console"> {
+`mkdir -p ~/.local/xPacks/pkg-config
+cd ~/.local/xPacks/pkg-config
+
+tar xvf ~/Downloads/xpack-pkg-config-${customField('xpackVersion')}-linux-x64.tar.gz
+chmod -R -w xpack-pkg-config-${customField('xpackVersion')}
+`} </CodeBlock>
+
+</TabItem>
+
 </Tabs>
 
 :::info
@@ -580,15 +580,15 @@ After install, the package creates a hierarchy of folders like the following
 
 <Tabs groupId="operating-systems">
 
-<TabItem value="linux" label="GNU/Linux">
-
-<FoldersHierarchiesLinux />
-
-</TabItem>
-
 <TabItem value="macos" label="macOS">
 
 <FoldersHierarchiesMacOS />
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<FoldersHierarchiesLinux />
 
 </TabItem>
 

@@ -15,19 +15,19 @@ To check if the {props.appName} installed manually starts properly, use somethin
 
 <Tabs groupId="operating-systems">
 
-<TabItem value="linux" label="GNU/Linux">
+<TabItem value="macos" label="macOS">
 
 <CodeBlock language="console"> {
-`$ ~/.local/xPacks/${props.appLcName}/xpack-${props.appLcName}-${customField('xpackVersion')}/bin/${props.programName} --version
+`% ~/Library/xPacks/${props.appLcName}/xpack-${props.appLcName}-${customField('xpackVersion')}/bin/${props.programName} --version
 ${props.branding}${customField('upstreamVersion')}
 `} </CodeBlock>
 
 </TabItem>
 
-<TabItem value="macos" label="macOS">
+<TabItem value="linux" label="GNU/Linux">
 
 <CodeBlock language="console"> {
-`% ~/Library/xPacks/${props.appLcName}/xpack-${props.appLcName}-${customField('xpackVersion')}/bin/${props.programName} --version
+`$ ~/.local/xPacks/${props.appLcName}/xpack-${props.appLcName}-${customField('xpackVersion')}/bin/${props.programName} --version
 ${props.branding}${customField('upstreamVersion')}
 `} </CodeBlock>
 
