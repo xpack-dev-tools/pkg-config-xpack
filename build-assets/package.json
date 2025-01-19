@@ -17,13 +17,6 @@
     },
     "properties": {
       "platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64",
-      "customFields": {
-        "programName": "pkg-config",
-        "branding": "",
-        "$link": "https://pkgconfig.freedesktop.org/releases/",
-        "pkgconfigReleaseDate": "20 Mar 2017",
-        "isSecondaryTool": "true"
-      },
       "buildFolderRelativePath": "{{'build' | path_join: configuration.name | to_filename | downcase}}",
       "buildFolderRelativePathPosix": "{{'build' | path_posix_join: configuration.name | downcase}}",
       "commandBashBuild": "bash {{properties.dbg}} scripts/build.sh --target {{configuration.name}} --build-folder {{properties.buildFolderRelativePathPosix}}",
