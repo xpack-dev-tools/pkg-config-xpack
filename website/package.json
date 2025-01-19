@@ -56,7 +56,15 @@
       "last 5 safari version"
     ]
   },
-  "websiteConfig": {},
+  "websiteConfig": {
+    "customFields": {
+      "programName": "pkg-config",
+      "branding": "",
+      "$link": "https://pkgconfig.freedesktop.org/releases/",
+      "pkgconfigReleaseDate": "20 Mar 2017",
+      "isSecondaryTool": "true"
+    }
+  },
   "engines": {
     "node": ">=18.0"
   }
