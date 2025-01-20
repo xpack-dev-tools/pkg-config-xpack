@@ -57,13 +57,11 @@
     ]
   },
   "websiteConfig": {
-    "customFields": {
-      "programName": "pkg-config",
-      "branding": "",
-      "$link": "https://pkgconfig.freedesktop.org/releases/",
-      "pkgconfigReleaseDate": "20 Mar 2017",
-      "isSecondaryTool": "true"
-    }
+    "programName": "pkg-config",
+    "branding": "",
+    "isSecondaryTool": "true",
+    "$link": "https://pkgconfig.freedesktop.org/releases/",
+    "pkgconfigReleaseDate": "20 Mar 2017"
   },
   "engines": {
     "node": ">=18.0"
