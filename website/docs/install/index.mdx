@@ -246,7 +246,7 @@ The command to install the **latest** available version of **pkg-config** is:
 To install a **specific version**, specify it explicitly:
 
 <CodeBlock language="sh"> {
-`xpm install @xpack-dev-tools/pkg-config@${customField('releaseVersion')} --verbose
+`xpm install @xpack-dev-tools/pkg-config@0.29.2-3.1 --verbose
 `} </CodeBlock>
 
 <Tabs groupId="operating-systems">
@@ -349,7 +349,7 @@ The result looks like this:
     "dependencies": {},
     "devDependencies": {
       "@xpack-dev-tools/pkg-config": {
-        "specifier": "${customField('xpackVersion')}.${customField('npmSubversion')}",
+        "specifier": "0.29.2-3.1",
         "local": "link",
         "platforms": "all"
       }
@@ -405,7 +405,7 @@ the project build configurations need a PATH adjustment:
 <TabItem value="macos" label="macOS">
 
 <CodeBlock language="sh"> {
-`export PATH=$HOME/Library/xPacks/\@pack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/bin:$PATH
+`export PATH=$HOME/Library/xPacks/\@pack-dev-tools/pkg-config/0.29.2-3.1/.content/bin:$PATH
 `} </CodeBlock>
 
 </TabItem>
@@ -413,7 +413,7 @@ the project build configurations need a PATH adjustment:
 <TabItem value="linux" label="GNU/Linux">
 
 <CodeBlock language="sh"> {
-`export PATH=$HOME/.local/xPacks/@xpack-dev-tools/pkg-config/${customField('xpackVersion')}.${customField('npmSubversion')}/.content/bin:$PATH
+`export PATH=$HOME/.local/xPacks/@xpack-dev-tools/pkg-config/0.29.2-3.1/.content/bin:$PATH
 `} </CodeBlock>
 
 </TabItem>
@@ -503,8 +503,8 @@ are packed as `.tar.gz` archives.
 Download the latest version named like:
 
 <ul>
-<li><code>xpack-pkg-config-{customField('xpackVersion')}-darwin-x64.tar.gz</code></li>
-<li><code>xpack-pkg-config-{customField('xpackVersion')}-darwin-arm64.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-darwin-arm64.tar.gz</code></li>
 </ul>
 
 :::note
@@ -519,14 +519,14 @@ unpack the archive and move it to a location of your choice.
 
 The recommended location is
 the <code>~/Library/xPacks/pkg-config</code> folder, for
-example <code>/Users/ilg/Library/xPacks/pkg-config/xpack-pkg-config-{customField('xpackVersion')}</code>:
+example <code>/Users/ilg/Library/xPacks/pkg-config/xpack-pkg-config-0.29.2-3</code>:
 
 <CodeBlock language="console"> {
 `mkdir -p ~/Library/xPacks/pkg-config
 cd ~/Library/xPacks/pkg-config
 
-tar xvf ~/Downloads/xpack-pkg-config-${customField('xpackVersion')}-darwin-x64.tar.gz
-chmod -R -w xpack-pkg-config-${customField('xpackVersion')}
+tar xvf ~/Downloads/xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz
+chmod -R -w xpack-pkg-config-0.29.2-3
 `} </CodeBlock>
 
 </TabItem>
@@ -538,9 +538,9 @@ are packed as `.tar.gz` archives.
 Download the latest version named like:
 
 <ul>
-<li><code>xpack-pkg-config-{customField('xpackVersion')}-linux-x64.tar.gz</code></li>
-<li><code>xpack-pkg-config-{customField('xpackVersion')}-linux-arm64.tar.gz</code></li>
-<li><code>xpack-pkg-config-{customField('xpackVersion')}-linux-arm.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-linux-x64.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-linux-arm64.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-linux-arm.tar.gz</code></li>
 </ul>
 
 :::note
@@ -555,14 +555,14 @@ unpack the archive and move it to a location of your choice.
 
 The recommended location is
 the <code>~/.local/xPacks/pkg-config</code> folder, for
-example <code>/home/ilg/.local/xPacks/pkg-config/xpack-pkg-config-{customField('xpackVersion')}</code>:
+example <code>/home/ilg/.local/xPacks/pkg-config/xpack-pkg-config-0.29.2-3</code>:
 
 <CodeBlock language="console"> {
 `mkdir -p ~/.local/xPacks/pkg-config
 cd ~/.local/xPacks/pkg-config
 
-tar xvf ~/Downloads/xpack-pkg-config-${customField('xpackVersion')}-linux-x64.tar.gz
-chmod -R -w xpack-pkg-config-${customField('xpackVersion')}
+tar xvf ~/Downloads/xpack-pkg-config-0.29.2-3-linux-x64.tar.gz
+chmod -R -w xpack-pkg-config-0.29.2-3
 `} </CodeBlock>
 
 </TabItem>
