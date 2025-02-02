@@ -30,7 +30,12 @@ function HomepageHeader() {
       <HeadTitle title="Welcome to the xPack pkg-config!" />
       <div className="container">
         <Heading as="h1" className="hero__title">{siteConfig.title}</Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">{siteConfig.tagline}
+        <span className="margin-left-platforms">
+          <span className="tagline-platform-apple"></span>
+          <span className="tagline-platform-linux"></span>
+        </span>
+        </p>
         <div className={styles.installWithCopy}>
           <InstallWithCopy>xpm install @xpack-dev-tools/pkg-config@0.29.2-3.1 --verbose</InstallWithCopy>
         </div>

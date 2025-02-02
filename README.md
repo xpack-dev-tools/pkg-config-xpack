@@ -1,6 +1,6 @@
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/pkg-config-xpack)](https://github.com/xpack-dev-tools/pkg-config-xpack/blob/xpack/package.json)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/pkg-config-xpack)](https://github.com/xpack-dev-tools/pkg-config-xpack/releases)
-[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/pkg-config?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config/)
+[![NPM Version](https://img.shields.io/npm/v/@xpack-dev-tools/pkg-config?color=green)](https://www.npmjs.com/package/@xpack-dev-tools/pkg-config/)
 [![license](https://img.shields.io/github/license/xpack-dev-tools/pkg-config-xpack)](https://github.com/xpack-dev-tools/pkg-config-xpack/blob/xpack/LICENSE)
 
 # The xPack pkg-config
