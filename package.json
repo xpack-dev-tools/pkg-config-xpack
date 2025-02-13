@@ -51,10 +51,6 @@
           "fileName": "xpack-pkg-config-0.29.2-3-linux-arm64.tar.gz",
           "sha256": "53acb139607b976e185bc15ff21adf033aebb656f6534ccfce4a8eb777a17ec2"
         },
-        "linux-arm": {
-          "fileName": "xpack-pkg-config-0.29.2-3-linux-arm.tar.gz",
-          "sha256": "885c2ef23a3bde8122e03c05ac030de4163dc4e9086573ad7af2a1e763551c3f"
-        },
         "linux-x64": {
           "fileName": "xpack-pkg-config-0.29.2-3-linux-x64.tar.gz",
           "sha256": "b21353e97e411a5eec4761d71c05ab6ac84f1c8d8748a91f06b823fee62513f8"
