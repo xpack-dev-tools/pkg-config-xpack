@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "xpack": {
-    "minimumXpmRequired": "0.16.3",
+    "minimumXpmRequired": "0.20.5",
     "binaries": {
       "destination": "./.content",
       "baseUrl": "https://github.com/xpack-dev-tools/pkg-config-xpack/releases/download/v0.29.2-3",
@@ -57,7 +57,7 @@
         }
       }
     },
-    "bin": {
+    "executables": {
       "pkg-config": "./.content/bin/pkg-config"
     }
   },
