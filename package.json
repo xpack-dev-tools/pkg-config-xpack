@@ -67,8 +67,9 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "longName": "pkg-config",
-    "shortName": "pkg-config"
+    "descriptiveName": "pkg-config",
+    "permalinkName": "pkg-config",
+    "useSelfHostedRunners": "true"
   },
   "engines": {
     "node": " >=18.0.0"
