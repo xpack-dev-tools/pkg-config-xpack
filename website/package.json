@@ -76,7 +76,8 @@
     "branding": "",
     "isSecondaryTool": "true",
     "$link": "https://pkgconfig.freedesktop.org/releases/",
-    "pkgconfigReleaseDate": "20 Mar 2017"
+    "pkgconfigReleaseDate": "20 Mar 2017",
+    "shareOnTwitter": "true"
   },
   "engines": {
     "node": ">=18.0"
