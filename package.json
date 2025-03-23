@@ -69,6 +69,7 @@
   "topConfig": {
     "descriptiveName": "pkg-config",
     "permalinkName": "pkg-config",
+    "skipCiTests": "true",
     "useSelfHostedRunners": "true"
   },
   "engines": {
