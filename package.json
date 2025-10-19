@@ -67,12 +67,13 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "descriptiveName": "pkg-config",
+    "descriptiveName": "xPack pkg-config",
+    "upstreamDescriptiveName": "pkg-config",
     "permalinkName": "pkg-config",
     "skipCiTests": "true",
     "useSelfHostedRunners": "true"
   },
   "engines": {
-    "node": " >=18.0.0"
+    "node": " >=20.0"
   }
 }

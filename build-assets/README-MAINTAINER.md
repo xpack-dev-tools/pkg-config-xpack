@@ -515,7 +515,7 @@ These commands use the `xpack-develop` branch of this repo.
 
 ## Durations & results
 
-The builds take a few minutes to complete.
+The builds take several minutes to complete.
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions/) page.
