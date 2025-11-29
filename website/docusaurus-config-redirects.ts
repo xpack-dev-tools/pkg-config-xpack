@@ -1,12 +1,12 @@
 /*
  * This file is part of the xPack project (http://xpack.github.io).
- * Copyright (c) 2024 Liviu Ionescu. All rights reserved.
+ * Copyright (c) 2024-2025 Liviu Ionescu. All rights reserved.
  *
  * Permission to use, copy, modify, and/or distribute this software
  * for any purpose is hereby granted, under the terms of the MIT license.
  *
  * If a copy of the license was not distributed with this file, it can
- * be obtained from https://opensource.org/licenses/MIT/.
+ * be obtained from https://opensource.org/licenses/mit.
  */
 
 import util from 'node:util';
@@ -25,7 +25,7 @@ export const redirects = {
     //     to: '/docs/newDoc2',
     //     from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
     //   },
-    
+
     {
       from: '/docs/developer-info',
       to: '/docs/developer',
@@ -37,7 +37,11 @@ export const redirects = {
     {
       from: '/docs/user-info',
       to: '/docs/user',
-    }
+    },
+    {
+      from: '/docs/about',
+      to: '/docs/project/about',
+    },
   ],
   createRedirects(existingPath) {
     console.log(existingPath);
@@ -56,7 +60,7 @@ export const redirects = {
     //   }
     //   return undefined; // Return a falsy value: no redirect created
     //   },
-    
+
     if (existingPath.includes('/user-info')) {
       return [
         existingPath.replace('/user-info', '/user')
@@ -70,5 +74,5 @@ export const redirects = {
         existingPath.replace('/maintainer-info', '/maintainer')
       ];
     }
-}
+  }
 }

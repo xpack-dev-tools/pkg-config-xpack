@@ -1,90 +1,28 @@
 // DO NOT EDIT!
-// Automatically generated from xbb-helper/templates/docusaurus/common.
+// Automatically generated from docusaurus-template-liquid/templates/docusaurus.
 
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+/* eslint-disable */
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 // import logger from '@docusaurus/logger';
 import util from 'node:util';
 
-import {redirects} from './docusaurus-config-redirects'
+import { redirects } from './docusaurus-config-redirects';
+import { getCustomFields } from './customFields';
 
 // The node.js modules cannot be used in modules imported in browser code:
 // webpack < 5 used to include polyfills for node.js core modules by default.
 // so the entire initialisation code must be in this file, that is
 // not processed by webpack.
 
-import {fileURLToPath} from 'node:url';
-import path from 'node:path';
-import fs from 'node:fs';
-
-// ----------------------------------------------------------------------------
-
-function getCustomFields() {
-  const pwd = fileURLToPath(import.meta.url);
-  // console.log(pwd);
-
-  // First get the version from the top package.json.
-  const topFilePath = path.join(path.dirname(path.dirname(pwd)), 'package.json');
-  // console.log(filePath);
-  const topFileContent = fs.readFileSync(topFilePath);
-
-  const topPackageJson = JSON.parse(topFileContent.toString());
-  const jsonVersion = topPackageJson.version.replace(/[.-]pre/, '');
-
-  console.log(`package version: ${topPackageJson.version}`);
-
-  // Remove the first part, up to the last dot.
-  const npmSubversion = jsonVersion.replace(/^.*[.]/, '');
-
-  // Remove from the last dot to the end.
-  const xpackVersion = jsonVersion.replace(/[.][0-9]*$/, '');
-
-  // Remove the pre-release.
-  const xpackSemver = xpackVersion.replace(/[-].*$/, '');
-
-  // Remove the first part, up to the dash.
-  const xpackSubversion = xpackVersion.replace(/^.*[-]/, '');
-
-  let rootPackageJson
-  try {
-    const rootFilePath = path.join(path.dirname(path.dirname(pwd)), 'build-assets', 'package.json');
-    // console.log(filePath);
-    const rootFileContent = fs.readFileSync(rootFilePath);
-    rootPackageJson = JSON.parse(rootFileContent.toString());
-  } catch (error) {
-    rootPackageJson = topPackageJson;
-  }
-
-  const customFields = rootPackageJson?.xpack?.properties?.customFields ?? {};
-
-  let upstreamVersion
-  if (customFields.hasTwoNumbersVersion === 'true' && xpackSemver.endsWith('.0')) {
-    // Remove the patch number if zero (wine uses both 2 and 3 numbers).
-    upstreamVersion = xpackSemver.replace(/[.]0*$/, '');
-  } else {
-    upstreamVersion = xpackSemver;
-  }
-
-  return {
-    appName: rootPackageJson.xpack.properties.appName,
-    appLcName: rootPackageJson.xpack.properties.appLcName,
-    version: jsonVersion,
-    xpackVersion,
-    xpackSemver,
-    xpackSubversion,
-    npmSubversion,
-    upstreamVersion,
-    docusaurusVersion: require('@docusaurus/core/package.json').version,
-    buildTime: new Date().getTime(),
-    ...customFields,
-  }
-}
-
 // ----------------------------------------------------------------------------
 
 const customFields = getCustomFields();
 console.log('customFields: ' + util.inspect(customFields));
+
+const actualBaseUrl = process.env.DOCUSAURUS_BASEURL ??
+  '/pkg-config-xpack/';
 
 // ----------------------------------------------------------------------------
 
@@ -92,15 +30,15 @@ const config: Config = {
   title: 'xPack pkg-config' +
     ((process.env.DOCUSAURUS_IS_PREVIEW === 'true') ? ' (preview)' : ''),
   tagline: 'A binary distribution of pkg-config',
+
   // Explicitly set in headTags.
   // favicon: '/img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://xpack-dev-tools.github.io',
+  url: 'https://xpack-dev-tools.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.DOCUSAURUS_BASEURL ??
-    '/pkg-config-xpack/',
+  baseUrl: actualBaseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -109,7 +47,6 @@ const config: Config = {
 
   onBrokenAnchors: 'throw',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
 
   onDuplicateRoutes: 'throw',
 
@@ -125,55 +62,19 @@ const config: Config = {
     locales: ['en'],
   },
 
-  presets: [
-    [
-      'classic',
-      {
-        docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/xpack-dev-tools/pkg-config-xpack/edit/xpack/website/',
-          // showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/xpack-dev-tools/pkg-config-xpack/edit/xpack/website/',
-          showLastUpdateTime: true,
-          blogSidebarCount: 8,
-          authorsMapPath: '../authors.yml',
-        },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
-        // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
-        sitemap: {
-          lastmod: 'date',
-          changefreq: 'weekly',
-          priority: 0.5,
-          ignorePatterns: [
-            '/pkg-config-xpack/blog/archive/**',
-            '/pkg-config-xpack/blog/authors/**',
-            '/pkg-config-xpack/blog/tags/**'
-          ],
-          filename: 'sitemap.xml',
-        },
-        // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-gtag
-        // https://tagassistant.google.com
-        gtag: {
-          trackingID: 'G-7QE5W7V05S',
-          anonymizeIP: false,
-        },
-      } satisfies Preset.Options,
-    ],
-  ],
+  markdown: {
+    format: 'detect',
+    hooks: {
+        onBrokenMarkdownLinks: 'throw'
+    }
+  },
 
   plugins: [
+    [
+      // https://docusaurus.io/docs/next/api/plugins/@docusaurus/plugin-client-redirects#redirects
+      '@docusaurus/plugin-client-redirects',
+      redirects,
+    ],
     [
       '@docusaurus/plugin-ideal-image',
       {
@@ -184,12 +85,77 @@ const config: Config = {
         disableInDev: false,
       },
     ],
-    [
-      // https://docusaurus.io/docs/next/api/plugins/@docusaurus/plugin-client-redirects#redirects
-      '@docusaurus/plugin-client-redirects',
-      redirects
-    ],
+
+    // Local plugins.
     './src/plugins/SelectReleasesPlugin',
+  ],
+
+  themes: [
+    // [
+    //   // Explicitly required when not using `preset-classic`.
+    //   // https://docusaurus.io/docs/search#using-algolia-docsearch
+    //   '@docusaurus/theme-search-algolia',
+    //   {
+    //   }
+    // ],
+  ],
+
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: 'https://github.com/xpack-dev-tools/pkg-config-xpack/edit/website/website/',
+          // showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+        },
+        // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog
+        blog: {
+          showReadingTime: true,
+          blogSidebarCount: 8,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl: 'https://github.com/xpack-dev-tools/pkg-config-xpack/edit/website/website/',
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
+        pages: {},
+        // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-gtag
+        // https://tagassistant.google.com
+        gtag: {
+          trackingID: 'G-7QE5W7V05S',
+          anonymizeIP: false,
+        },
+        // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: [
+            actualBaseUrl + 'blog/archive/**',
+            actualBaseUrl + 'blog/authors/**',
+            actualBaseUrl + 'blog/tags/**'
+          ],
+          filename: 'sitemap.xml',
+        },
+
+        debug: true,
+
+        theme: {
+          customCss: './src/css/custom.css',
+        },
+
+      } satisfies Preset.Options,
+    ],
   ],
 
   // https://docusaurus.io/docs/api/docusaurus-config#headTags
@@ -199,7 +165,16 @@ const config: Config = {
       attributes: {
         rel: 'icon',
         type: 'image/png',
-        href: '/pkg-config-xpack/favicons/favicon-48x48.png',
+        href: actualBaseUrl + 'favicons/favicon-96x96.png',
+        sizes: '96x96'
+      }
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        href: actualBaseUrl + 'favicons/favicon-48x48.png',
         sizes: '48x48'
       }
     },
@@ -208,14 +183,14 @@ const config: Config = {
       attributes: {
         rel: 'icon',
         type: 'image/svg+xml',
-        href: '/pkg-config-xpack/favicons/favicon.svg'
+        href: actualBaseUrl + 'favicons/favicon.svg'
       }
     },
     {
       tagName: 'link',
       attributes: {
         rel: 'shortcut icon',
-        href: '/pkg-config-xpack/favicons/favicon.ico'
+        href: actualBaseUrl + 'favicons/favicon.ico'
       }
     },
     {
@@ -230,13 +205,10 @@ const config: Config = {
       tagName: 'link',
       attributes: {
         rel: 'manifest',
-        href: '/pkg-config-xpack/favicons/site.webmanifest'
+        href: actualBaseUrl + 'favicons/site.webmanifest'
       }
     }
   ],
-
-  // No longer needed.
-  // themes: [ '@docusaurus/theme-search-algolia' ],
 
   // https://docusaurus.io/docs/seo
   themeConfig: {
@@ -254,8 +226,7 @@ const config: Config = {
 
       logo: {
         alt: 'xPack Logo',
-        src: 'img/components-256.png',
-        // href: 'https://xpack.github.io/',
+        src: 'img/logo-256.png',
         href: 'https://xpack-dev-tools.github.io/'
       },
       items: [
@@ -276,7 +247,7 @@ const config: Config = {
               to: '/docs/getting-started'
             },
             {
-              label: 'Install Guide',
+              label: 'Installation Guide',
               to: '/docs/install'
             },
             {
@@ -305,9 +276,9 @@ const config: Config = {
             },
             {
               label: 'About',
-              to: '/docs/about'
-            }
-          ]
+              to: '/docs/project/about'
+            },
+          ],
         },
         {
           type: 'dropdown',
@@ -342,16 +313,16 @@ const config: Config = {
           label: 'GitHub',
           items: [
             {
-              label: `pkg-config-xpack`,
+              label: `pkg-config-xpack project`,
               href: `https://github.com/xpack-dev-tools/pkg-config-xpack/`,
-            },
-            {
-              label: 'xpack-dev-tools org',
-              href: 'https://github.com/xpack-dev-tools/',
             },
             {
               label: 'xpack org',
               href: 'https://github.com/xpack/',
+            },
+            {
+              label: 'xpack-dev-tools org',
+              href: 'https://github.com/xpack-dev-tools/',
             },
           ]
         },
@@ -369,16 +340,16 @@ const config: Config = {
           title: 'Pages',
           items: [
             {
-              label: 'Install',
-              to: '/docs/install',
-            },
-            {
-              label: 'Support',
-              to: '/docs/support',
+              label: 'Getting Started',
+              to: '/docs/getting-started',
             },
             {
               label: 'Releases',
               to: '/docs/releases',
+            },
+            {
+              label: 'About',
+              to: '/docs/project/about',
             },
             {
               label: 'Blog',
@@ -399,7 +370,7 @@ const config: Config = {
             },
             {
               label: 'Discord',
-              href: 'https://discord.gg/kbzWaJerFG',
+              href: 'https://discord.com/invite/kbzWaJerFG',
             },
             {
               label: 'X/Twitter',
@@ -415,16 +386,16 @@ const config: Config = {
               href: 'https://www.paypal.com/donate/?hosted_button_id=5MFRG9ZRBETQ8',
             },
             {
-              label: 'GitHub pkg-config-xpack',
+              label: 'GitHub pkg-config-xpack project',
               href: 'https://github.com/xpack-dev-tools/pkg-config-xpack/',
-            },
-            {
-              label: 'GitHub xpack-dev-tools org',
-              href: 'https://github.com/xpack-dev-tools/',
             },
             {
               label: 'GitHub xpack org',
               href: 'https://github.com/xpack/',
+            },
+            {
+              label: 'GitHub xpack-dev-tools org',
+              href: 'https://github.com/xpack-dev-tools/',
             },
           ],
         },
@@ -476,6 +447,12 @@ const config: Config = {
       insights: false,
     },
   } satisfies Preset.ThemeConfig,
+
+  // TODO: find out how to disable cascade CSSs.
+  // future: {
+  //   v4: true,
+  //   experimental_faster: true,
+  // },
 
   customFields: customFields,
 };

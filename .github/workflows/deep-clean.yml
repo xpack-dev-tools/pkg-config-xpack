@@ -1,15 +1,15 @@
 # -----------------------------------------------------------------------------
 # DO NOT EDIT!
-# Generated from xpacks/@xpack-dev-tools/xbb-helper/templates/workflows/*.
+# Automatically generated from npm-packages-helper/templates/*.
 #
 # This file is part of the xPack project (http://xpack.github.io).
-# Copyright (c) 2021 Liviu Ionescu. All rights reserved.
+# Copyright (c) 2021-2025 Liviu Ionescu. All rights reserved.
 #
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 #
 # If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit/.
+# be obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -29,8 +29,7 @@
 
 
 
-
-name: 'Deep clean xPack pkg-config'
+name: 'Deep clean xPack xPack pkg-config'
 
 on:
   workflow_dispatch:
@@ -41,6 +40,10 @@ on:
         default: 'current'
 
 jobs:
+
+
+
+
 
 
   linux-x64:
@@ -81,25 +84,10 @@ jobs:
 
 
 
-  linux-arm:
-    name: 'linux-arm pkg-config ${{github.event.inputs.version}} clean'
-    timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, linux, arm, xbbla32]
 
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
 
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
+
+
 
 
 
@@ -128,12 +116,6 @@ jobs:
 
 
 
-
-
-
-
-
-
   darwin-x64:
     name: 'darwin-x64 pkg-config ${{github.event.inputs.version}} clean'
     timeout-minutes: 2880 # 2 days
@@ -154,12 +136,6 @@ jobs:
         run: |
           chmod -Rf a+w * || true
           rm -rf * .git*
-
-
-
-
-
-
 
 
 

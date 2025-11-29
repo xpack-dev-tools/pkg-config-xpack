@@ -1,21 +1,21 @@
 {/* DO NOT EDIT! */}
-{/* Automatically generated from xbb-helper/templates/docusaurus/common. */}
+{/* Automatically generated from docusaurus-template-liquid/templates/docusaurus. */}
 
 import CodeBlock from '@theme/CodeBlock';
 
-import customField from '@site/src/libs/customField';
-import {developmentDurations} from '../../maintainer/_development-durations.mdx'
+import {developmentDurations} from '@site/docs/_project/_development-durations.mdx';
 
 {/* ------------------------------------------------------------------------ */}
 
 {/* Arguments: props.platform */}
 
-{props.platform == "win32-x64" ? ( <p>The Windows builds run on GNU/Linux, using <a href="https://mingw-w64.org">mingw-w64</a>.</p> ) : ''}
+{props.platform === "win32-x64" ? ( <p>The Windows builds execute on GNU/Linux, utilising <a href="https://mingw-w64.org">mingw-w64</a>.</p> ) : ''}
 
 To prepare the docker build:
 
 <CodeBlock language="sh"> {
-`xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \\
+`npm --prefix ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets  install && \\
+xpm install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \\
 xpm run docker-prepare --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 `} </CodeBlock>
 
@@ -23,7 +23,8 @@ xpm run docker-prepare --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-
 <summary>... or, with the writable helper ...</summary>
 
 <CodeBlock language="sh"> {
-`xpm run install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \\
+`npm --prefix ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets  install && \\
+xpm install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \\
 xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \\
 xpm run docker-prepare --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \\
 xpm run docker-link-deps --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
@@ -31,26 +32,26 @@ xpm run docker-link-deps --config ${props.platform} -C ~/Work/xpack-dev-tools/pk
 
 </details>
 
-To run the docker build:
+To execute the docker build:
 
 <CodeBlock language="sh"> {
 `xpm run docker-build --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 `} </CodeBlock>
 
-or, for more verbosity, run the similar development build:
+or, for increased verbosity, execute the similar development build:
 
 <CodeBlock language="sh"> {
 `xpm run docker-build-development --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
 `} </CodeBlock>
 
 {developmentDurations[ props.platform ]}, the output of the build script is a compressed
-archive and its SHA signature, created in
+archive and its SHA signature, created within
 the <code>build-assets/build/{props.platform}/deploy</code> folder:
 
-* <code>xpack-pkg-config-{customField('xpackVersion')}-{props.platform}.tar.gz</code>
-* <code>xpack-pkg-config-{customField('xpackVersion')}-{props.platform}.tar.gz.sha</code>
+- <code>xpack-pkg-config-0.29.2-3-{props.platform}.tar.gz</code>
+- <code>xpack-pkg-config-0.29.2-3-{props.platform}.tar.gz.sha</code>
 
-To rerun the build, invoke the **deep-clean** action and repeat from install:
+To re-execute the build, invoke the **deep-clean** action and repeat from installation:
 
 <CodeBlock language="sh"> {
 `xpm run deep-clean --config ${props.platform} -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets

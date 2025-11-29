@@ -1,10 +1,11 @@
 ---
-title: xPack {{appName}} v{{releaseVersion}} released
-seo_title: Version {{releaseVersion}} released
-description: Version {{releaseVersion}} is a TODO new/maintenance release.
+
+title: {{packageConfig.descriptiveName}} v{{xpackVersion}} released
+seo_title: Version {{xpackVersion}} released
+description: Version {{xpackVersion}} is a TODO maintenance/new release.
 keywords:
   - xpack
-  - {{appLcName}}
+  - {{packageConfig.permalinkName}}
   - release
 
 date: {{releaseDate}}
@@ -18,9 +19,9 @@ tags:
 # ----- Custom properties -----------------------------------------------------
 
 pkg_config_version: "{{upstreamVersion}}"
-pkg_config_release_date: "{{customFields.pkgconfigReleaseDate}}"
+pkg_config_release_date: "{{packageWebsiteConfig.pkgconfigReleaseDate}}"
 
-version: "{{releaseVersion}}"
+version: "{{xpackVersion}}"
 npm_subversion: "1"
 
 download_url: https://github.com/xpack-dev-tools/pkg-config-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
@@ -30,10 +31,14 @@ download_url: https://github.com/xpack-dev-tools/pkg-config-xpack/releases/tag/v
 import {PageMetadata} from '@docusaurus/theme-common';
 import Image from '@theme/IdealImage';
 import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-import Prerequisites from './_common/_prerequisites-glib-2.27.mdx'
-import DeprecationNotices from './_common/_deprecation-notices-glib-2.27.mdx'
-import DownloadAnalytics from './_common/_download-analytics.mdx'
+import customField from '@site/src/libs/customField';
+
+import Prerequisites from './_common/_prerequisites-glib-2.28.mdx';
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.28.mdx';
+import DownloadAnalytics from './_common/_download-analytics.mdx';
 
 TODO: select one summary
 
@@ -51,13 +56,13 @@ is a standalone cross-platform binary distribution of
 
 There are separate binaries for
 **macOS** (x64 and arm64)
-and **GNU/Linux** (x64, arm64 and arm).
+and **GNU/Linux** (x64 and arm64).
 
 :::note Raspberry Pi
 
 The main targets for the GNU/Linux Arm
-binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
-armv6 is not supported).
+binaries are the **Raspberry Pi** class devices (aarch64 only;
+armv6 and armv7l are no longer supported).
 
 :::
 
@@ -72,10 +77,10 @@ The binary files are available from <a href={frontMatter.download_url}>GitHub Re
 The easiest way to install this specific version, is by using **xpm**:
 
 <CodeBlock language="console"> {
-`xpm install @xpack-dev-tools/{{appLcName}}@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`xpm install @xpack-dev-tools/{{packageConfig.permalinkName}}@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
 `} </CodeBlock>
 
-Comprehensive instructions for installing **xPack {{appName}}** on different platforms
+Comprehensive instructions for installing **xPack {{packageConfig.descriptiveName}}** on different platforms
 can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
@@ -128,7 +133,6 @@ Before publishing, a set of simple tests were performed on an exhaustive
 set of platforms. The results are available from:
 
 - [GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions/)
-- [Travis CI](https://app.travis-ci.com/github/xpack-dev-tools/pkg-config-xpack/builds/)
 
 ## Tests
 

@@ -1,16 +1,16 @@
 
 # -----------------------------------------------------------------------------
 # DO NOT EDIT!
-# Generated from xpacks/@xpack-dev-tools/xbb-helper/templates/workflows/*.
+# Automatically generated from npm-packages-helper/templates/*.
 #
 # This file is part of the xPack project (http://xpack.github.io).
-# Copyright (c) 2021 Liviu Ionescu. All rights reserved.
+# Copyright (c) 2021-2025 Liviu Ionescu. All rights reserved.
 #
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 #
 # If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit/.
+# be obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -26,7 +26,6 @@
 # https://github.com/actions/download-artifact
 
 # -----------------------------------------------------------------------------
-
 
 
 
@@ -52,130 +51,10 @@ on:
 jobs:
 
 
-  linux-x64-test:
-    name: 'linux-x64 pkg-config ${{github.event.inputs.version}} test'
-    runs-on: ubuntu-24.04
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{github.event.inputs.helper-git-ref}}
-          fetch-depth: 3
-
-      - name: 'Run ${{github.event.inputs.version}} native test'
-        run: bash build-assets/scripts/test.sh --image github-actions-ubuntu-latest --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
-
-
-
-
-
-  linux-arm64-test:
-    name: 'linux-arm64 pkg-config ${{github.event.inputs.version}} test'
-    runs-on: [self-hosted, linux, arm64, xbbla]
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
-
-      # https://github.com/actions/checkout
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{github.event.inputs.helper-git-ref}}
-          fetch-depth: 3
-
-      - name: 'Run ${{github.event.inputs.version}} docker test'
-        uses: docker://node:lts-slim # Currently based on debian:12-slim
-        with:
-          entrypoint: /bin/bash
-          args: /github/workspace/build-assets/scripts/test.sh --image ubuntu:22.04 --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
-
-
-
-
-
-  linux-arm-test:
-    name: 'linux-arm pkg-config ${{github.event.inputs.version}} test'
-    runs-on: [self-hosted, linux, arm, xbbla32]
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
-
-      # https://github.com/actions/checkout
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{github.event.inputs.helper-git-ref}}
-          fetch-depth: 3
-
-      - name: 'Run ${{github.event.inputs.version}} docker test'
-        uses: docker://arm32v7/node:lts-slim # Currently based on debian:12-slim
-        with:
-          entrypoint: /bin/bash # /usr/bin/linux32
-          args: /github/workspace/build-assets/scripts/test.sh --image debian --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
-
-
-
-
-
   darwin-x64-test:
     name: 'darwin-x64 pkg-config ${{github.event.inputs.version}} test'
-    # https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md
-    runs-on: macos-13
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md
+    runs-on: macos-15-intel
 
     steps:
       - name: 'Show environment'
@@ -184,7 +63,7 @@ jobs:
           sw_vers
           ls -lA /Library/Developer/CommandLineTools/SDKs || true
           ls -lA /Applications
-          sudo xcode-select --switch /Applications/Xcode_14.2.app
+          sudo xcode-select --switch /Applications/Xcode_16.4.app
           xcode-select --print-path
           xcodebuild -version || true
           pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
@@ -194,6 +73,8 @@ jobs:
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
 
+      - name: 'Remove Homebrew'
+        uses: xpack/remove-homebrew-action@v1
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
           chmod -Rf a+w * || true
@@ -201,12 +82,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -222,8 +103,8 @@ jobs:
 
   darwin-arm64-test:
     name: 'darwin-arm64 pkg-config ${{github.event.inputs.version}} test'
-    # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
-    runs-on: macos-14
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md
+    runs-on: macos-15
 
     steps:
       - name: 'Show environment'
@@ -232,7 +113,7 @@ jobs:
           sw_vers
           ls -lA /Library/Developer/CommandLineTools/SDKs || true
           ls -lA /Applications
-          sudo xcode-select --switch /Applications/Xcode_15.4.app
+          sudo xcode-select --switch /Applications/Xcode_16.4.app
           xcode-select --print-path
           xcodebuild -version || true
           pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
@@ -242,6 +123,9 @@ jobs:
           ls -lLA
           env | sort | grep -E '^[^ \t]+='
 
+      - name: 'Remove Homebrew'
+        uses: xpack/remove-homebrew-action@v1
+
       - name: 'Clean working area' # Mandatory for self-hosted runners.
         run: |
           chmod -Rf a+w * || true
@@ -249,12 +133,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -263,6 +147,75 @@ jobs:
 
       - name: 'Run ${{github.event.inputs.version}} native test'
         run: bash build-assets/scripts/test.sh --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
+
+
+
+
+
+  linux-x64-test:
+    name: 'linux-x64 pkg-config ${{github.event.inputs.version}} test'
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: 'Show environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          ls -lLA
+          env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Checkout project'
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 3
+
+      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
+        uses: actions/checkout@v5
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
+          ref: ${{github.event.inputs.helper-git-ref}}
+          fetch-depth: 3
+
+      - name: 'Run ${{github.event.inputs.version}} native test'
+        run: bash build-assets/scripts/test.sh --image github-actions-ubuntu-latest --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
+
+
+
+
+
+  linux-arm64-test:
+    name: 'linux-arm64 pkg-config ${{github.event.inputs.version}} test'
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+      - name: 'Show environment'
+        run: |
+          uname -a
+          lsb_release -sd
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          ls -lLA
+          env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Checkout project'
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 3
+
+      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
+        uses: actions/checkout@v5
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
+          ref: ${{github.event.inputs.helper-git-ref}}
+          fetch-depth: 3
+
+      - name: 'Run ${{github.event.inputs.version}} native test'
+        run: bash build-assets/scripts/test.sh --image github-actions-ubuntu-latest --version ${{github.event.inputs.version}} --base-url ${{github.event.inputs.base_url}}
 
 
 

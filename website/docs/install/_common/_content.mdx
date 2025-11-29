@@ -1,0 +1,437 @@
+{/* DO NOT EDIT! */}
+{/* Automatically generated from docusaurus-template-liquid/templates/docusaurus. */}
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import Admonition from '@theme/Admonition';
+
+import LinksVsForwarders from '@site/src/components/LinksVsForwarders';
+
+import ProjectFoldersHierarchiesLinux from '@site/docs/_project/_folders-hierarchies-linux.mdx';
+import ProjectFoldersHierarchiesWindows from '@site/docs/_project/_folders-hierarchies-windows.mdx';
+import ProjectFoldersHierarchiesMacOS from '@site/docs/_project/_folders-hierarchies-macos.mdx';
+
+import CommonXpmPackageRefresher from '../_common/_xpm-package-refresher.mdx';
+import CommonInitialiseTheProject from '../_common/_initialise-the-project.mdx';
+import CommonInstallationDetails from '../_common/_installation-details.mdx';
+import CommonReproducibilityAndDependencies from '../_common/_reproducibility-and-dependencies.mdx';
+import CommonUninstall from '../_common/_uninstall.mdx';
+
+import ProjectAutomaticInstallQuickTest from '../_project/_automatic-install-quick-test.mdx';
+import ProjectManualInstallQuickTest from '../_project/_manual-install-quick-test.mdx';
+import ProjectMiscellaneous from '../_project/_miscellaneous.mdx';
+import ProjectTesting from '../_project/_testing.mdx';
+
+{/* ------------------------------------------------------------------------ */}
+
+The **xPack pkg-config** may be installed automatically, utilising the `xpm` command
+(the recommended method), or manually, by downloading and unpacking one of the
+platform-specific archives.
+
+## Automated installation
+
+The easiest (and recommended) method to install xPack pkg-config
+is via **xpm** and the package available
+as <a href={`https://www.npmjs.com/package/@xpack-dev-tools/pkg-config`}><code>@xpack-dev-tools/pkg-config</code></a> from
+the [`npmjs.com`](https://www.npmjs.com) registry.
+
+<CommonXpmPackageRefresher />
+
+### Prerequisites
+
+The only requirement for an automated installation is a recent
+[xpm](https://xpack.github.io/xpm/), which is a portable
+[Node.js](https://nodejs.org) command line application
+that complements [npm](https://docs.npmjs.com)
+with several additional features specific to
+**C/C++ projects**.
+
+To install **xpm**,
+follow the instructions on the
+[xpm install](https://xpack.github.io/xpm/install/) page.
+
+If already installed, it is always advisable to update it to the
+latest version with:
+
+```sh
+npm install --location=global xpm@latest
+```
+
+:::tip
+
+Although not mandated by **xpm**, it is also advisable to upgrade
+**npm** to the latest version, and
+**node** to a reasonably recent version (currently **npm** requires
+a **node** >=18.17.0).
+
+:::
+
+<details>
+<summary>Local installations</summary>
+
+One of the xPack design goals is to allow each project to
+select the exact versions of the tools it requires.
+
+Similarly to **npm** being able to install specific versions of the
+JavaScript tools into each project,
+**xpm** was also designed to be able to install specific versions of the
+required binary tools locally into each project.
+
+Therefore, similarly to the way **npm** installs the JavaScript packages into
+`node_modules`, **xpm** installs the binary tools into
+`xpacks`. Here there will be separate folders with the installed
+packages, for example
+<code>xpacks/@xpack-dev-tools/pkg-config</code>.
+
+Each such folder includes the `package.json` file with the
+project metadata and a sub-folder `.content` with the extracted
+binary archive. The executables are usually within `.content/bin`.
+
+:::tip
+
+On some platforms, names beginning with `.` (dot) might be hidden for
+normal browsing, and viewing them requires
+separate options (such as `ls -A`) or, in file browsers, to enable
+settings such as **Show Hidden Files**.
+
+:::
+
+</details>
+
+<details>
+<summary>The `xpacks/.bin` folder</summary>
+
+If multiple binary packages are installed, in order to allow
+the executables to be accessed, one possible solution is to add
+all `<package>/.content/bin` folders to the `PATH`.
+
+To simplify matters, **npm** employs a separate `<project>/node_modules/.bin` folder
+where it places links/forwarders
+pointing to the actual executable files.
+
+Similarly, **xpm** adds links/forwarders into
+a separate `<project>/xpacks/.bin` folder.
+
+With this setup, the project needs to prepend only this `.bin` folder
+to the `PATH`, and all the required tools are accessible
+and preferred over possible system tools.
+
+</details>
+
+<details>
+<summary>Global installations and the user global xPacks store</summary>
+
+Given that some binary tools (such as toolchains) may be very large
+(hundreds of megabytes or more), it is impractical to maintain multiple
+copies of these tools, one for each project.
+
+Instead, **xpm** installs the binary packages only once
+into a user global store (a platform-dependent folder
+within the home folder), thereby conserving disk space when the same
+tools are utilised across multiple projects.
+
+In order to allow the projects to access the binary tools installed within the
+user global store, instead of unpacking the archives in `xpacks`,
+**xpm** adds symbolic links pointing to the **user global xPacks store**.
+
+The outcome is functionally equivalent to installing the tools into
+each project, but without the wasted disk space.
+
+:::tip
+
+It is possible to force a local installation into a project
+by passing `--copy` to `xpm install`.
+
+:::
+
+If necessary, it is also possible to install packages only globally, without
+creating local links/forwarders (see below).
+
+</details>
+
+<details>
+<summary>The user xPacks cache</summary>
+
+To save download time, all archives are first stored within a
+cache, and all subsequent downloads are replaced with the
+cached content.
+
+Therefore, all published archives should be read-only and
+it is not permitted to replace them at a later time.
+
+</details>
+
+### Initialise the project
+
+Upon initial use, ensure that a `package.json` file is present within the
+project root folder.
+
+This may be achieved by executing `xpm init` in the desired project folder
+(substitute `my-project` accordingly):
+
+```sh
+cd my-project
+xpm init
+```
+
+<details>
+<summary>Under the hood</summary>
+
+The primary purpose of `xpm init` is to create a `package.json` file, if not
+already present.
+
+In addition to `name` & `version`, the minimal `package.json` must
+include a property named `xpacks`, even if empty. This property is
+mandatory to identify the package as an **xpm package**.
+
+</details>
+
+<CommonInitialiseTheProject />
+
+### Installation within the project
+
+The next step is to install the
+**pkg-config** package into the project.
+
+The command to install the **latest** available version of **pkg-config** is:
+
+<CodeBlock language="sh"> {
+`xpm install @xpack-dev-tools/pkg-config@latest --verbose
+`} </CodeBlock>
+
+
+To install a **specific version**, specify it explicitly:
+
+<CodeBlock language="sh"> {
+`xpm install @xpack-dev-tools/pkg-config@0.29.2-3.1 --verbose
+`} </CodeBlock>
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="macos" label="macOS">
+
+The main result is a set
+of links in
+the `.bin` folder:
+
+<CodeBlock language="console"> {
+`ls -l xpacks/.bin
+`} </CodeBlock>
+
+<details>
+<summary>PATH setup</summary>
+
+With all binary tools installed within `xpacks/.bin`, the project build
+configurations require only a single PATH adjustment:
+
+```sh
+export PATH=<...project-path...>/xpacks/.bin:$PATH
+```
+</details>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+The main result is a set
+of links in
+the `.bin` folder:
+
+<CodeBlock language="console"> {
+`ls -l xpacks/.bin
+`} </CodeBlock>
+
+<details>
+<summary>PATH setup</summary>
+
+With all binary tools installed within `xpacks/.bin`, the project build
+configurations require only a single PATH adjustment:
+
+```sh
+export PATH=<...project-path...>/xpacks/.bin:$PATH
+```
+</details>
+
+</TabItem>
+
+</Tabs>
+
+<CommonInstallationDetails />
+
+<CommonReproducibilityAndDependencies />
+
+### Installation globally
+
+For older development environments,
+it is also possible to install xPack pkg-config only globally in
+the **user's global xPacks store**, without any
+local links/forwarders; it
+is the developer's responsibility to configure the path to the tools.
+
+No other files are installed in any system folders or other locations.
+
+<CodeBlock language="sh"> {
+`xpm install @xpack-dev-tools/pkg-config@latest --global --verbose
+`} </CodeBlock>
+
+:::note
+
+Installing packages locally into a project always installs the
+packages in the **user's global xPacks store**; subsequent attempts to
+install the packages globally will fail with _already installed_.
+
+:::
+
+<details>
+<summary>PATH setup</summary>
+
+In order to access the xPack pkg-config binaries installed in
+the user's global xPacks store,
+the project build configurations need a PATH adjustment:
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="macos" label="macOS">
+
+<CodeBlock language="sh"> {
+`export PATH=$HOME/Library/xPacks/@xpack-dev-tools/pkg-config/0.29.2-3.1/.content/bin:$PATH
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<CodeBlock language="sh"> {
+`export PATH=$HOME/.local/xPacks/@xpack-dev-tools/pkg-config/0.29.2-3.1/.content/bin:$PATH
+`} </CodeBlock>
+
+</TabItem>
+
+</Tabs>
+
+</details>
+
+<CommonUninstall isWindows={props.isWindows} />
+
+<ProjectAutomaticInstallQuickTest/>
+
+## Manual installation
+
+For all platforms, the **xPack pkg-config** binaries are released as portable
+archives that may be installed in any location.
+
+The archives may be downloaded from
+the <a href={`https://github.com/xpack-dev-tools/pkg-config-xpack/releases`}>GitHub Releases</a> pages.
+
+### Download & unpack {#manual-install-download-and-unpack}
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="macos" label="macOS">
+
+The macOS versions of **xPack pkg-config**
+are packed as `.tar.gz` archives.
+Download the latest version named like:
+
+<ul>
+<li><code>xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-darwin-arm64.tar.gz</code></li>
+</ul>
+
+:::note
+
+In case you wonder where the suffix originates
+from, it is exactly the Node.js `process.platform` and `process.arch`.
+
+:::
+
+To manually install the <b>xPack pkg-config</b>,
+unpack the archive and move it to a location of your choice.
+
+The recommended location is
+the <code>~/Library/xPacks/pkg-config</code> folder, for
+example <code>/Users/ilg/Library/xPacks/pkg-config/xpack-pkg-config-0.29.2-3</code>:
+
+<CodeBlock language="console"> {
+`mkdir -p ~/Library/xPacks/pkg-config
+cd ~/Library/xPacks/pkg-config
+
+tar xvf ~/Downloads/xpack-pkg-config-0.29.2-3-darwin-x64.tar.gz
+chmod -R -w xpack-pkg-config-0.29.2-3
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+The GNU/Linux versions of **xPack pkg-config**
+are packed as `.tar.gz` archives.
+Download the latest version named like:
+
+<ul>
+<li><code>xpack-pkg-config-0.29.2-3-linux-x64.tar.gz</code></li>
+<li><code>xpack-pkg-config-0.29.2-3-linux-arm64.tar.gz</code></li>
+</ul>
+
+:::note
+
+In case you wonder where the suffix originates
+from, it is exactly the Node.js `process.platform` and `process.arch`.
+
+:::
+
+To manually install the <b>xPack pkg-config</b>,
+unpack the archive and move it to a location of your choice.
+
+The recommended location is
+the <code>~/.local/xPacks/pkg-config</code> folder, for
+example <code>/home/ilg/.local/xPacks/pkg-config/xpack-pkg-config-0.29.2-3</code>:
+
+<CodeBlock language="console"> {
+`mkdir -p ~/.local/xPacks/pkg-config
+cd ~/.local/xPacks/pkg-config
+
+tar xvf ~/Downloads/xpack-pkg-config-0.29.2-3-linux-x64.tar.gz
+chmod -R -w xpack-pkg-config-0.29.2-3
+`} </CodeBlock>
+
+</TabItem>
+
+</Tabs>
+
+:::info
+
+For manual installations, the recommended
+installation location is slightly different from the folders created by `xpm install`,
+which utilise the `@xpack-dev-tools` scope to group different tools,
+and `.content` to store the unpacked archive.
+
+:::
+
+<ProjectManualInstallQuickTest/>
+
+## Folder hierarchy
+
+After installation, the package creates a hierarchy of folders such as the following
+(only the first two depth levels are shown):
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="macos" label="macOS">
+
+<ProjectFoldersHierarchiesMacOS />
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<ProjectFoldersHierarchiesLinux />
+
+</TabItem>
+
+</Tabs>
+
+<ProjectMiscellaneous/>
+
+<ProjectTesting/>

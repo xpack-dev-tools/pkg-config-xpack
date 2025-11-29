@@ -1,16 +1,16 @@
 
 # -----------------------------------------------------------------------------
 # DO NOT EDIT!
-# Generated from xpacks/@xpack-dev-tools/xbb-helper/templates/workflows/*.
+# Automatically generated from npm-packages-helper/templates/*.
 #
 # This file is part of the xPack project (http://xpack.github.io).
-# Copyright (c) 2021 Liviu Ionescu. All rights reserved.
+# Copyright (c) 2021-2025 Liviu Ionescu. All rights reserved.
 #
 # Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 #
 # If a copy of the license was not distributed with this file, it can
-# be obtained from https://opensource.org/licenses/mit/.
+# be obtained from https://opensource.org/licenses/mit.
 #
 # -----------------------------------------------------------------------------
 
@@ -26,7 +26,6 @@
 # https://github.com/actions/download-artifact
 
 # -----------------------------------------------------------------------------
-
 
 
 
@@ -52,6 +51,128 @@ on:
 jobs:
 
 
+  darwin-x64-test:
+    name: 'darwin-x64 pkg-config@${{github.event.inputs.version}} test'
+    runs-on: macos-15-intel
+
+    steps:
+      - name: 'Show environment'
+        run: |
+          uname -a
+          sw_vers
+          ls -lA /Library/Developer/CommandLineTools/SDKs || true
+          ls -lA /Applications
+          sudo xcode-select --switch /Applications/Xcode_16.4.app
+          xcode-select --print-path
+          xcodebuild -version || true
+          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
+          clang++ -v
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          ls -lLA
+          env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Remove Homebrew'
+        uses: xpack/remove-homebrew-action@v1
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm'
+        run: |
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
+
+      # https://github.com/actions/checkout
+      - name: 'Checkout project'
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 3
+
+      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
+        uses: actions/checkout@v5
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
+          ref: ${{github.event.inputs.helper-git-ref}}
+          fetch-depth: 3
+
+      - name: 'Run ${{github.event.inputs.version}} xpm test'
+        run: bash build-assets/scripts/test.sh --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
+
+
+
+
+
+  darwin-arm64-test:
+    name: 'darwin-arm64 pkg-config@${{github.event.inputs.version}} test'
+    runs-on: macos-15
+
+    steps:
+      - name: 'Show environment'
+        run: |
+          uname -a
+          sw_vers
+          ls -lA /Library/Developer/CommandLineTools/SDKs || true
+          ls -lA /Applications
+          sudo xcode-select --switch /Applications/Xcode_16.4.app
+          xcode-select --print-path
+          xcodebuild -version || true
+          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
+          clang++ -v
+          echo "whoami: $(whoami)"
+          echo "pwd: $(pwd)"
+          ls -lLA
+          env | sort | grep -E '^[^ \t]+='
+
+      - name: 'Remove Homebrew'
+        uses: xpack/remove-homebrew-action@v1
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          check-latest: true
+
+      - name: 'Verify Node.js and npm'
+        run: |
+          echo "$(which node): $(node --version)"
+          echo "$(which npm): $(npm --version)"
+
+      - name: 'Clean working area' # Mandatory for self-hosted runners.
+        run: |
+          chmod -Rf a+w * || true
+          rm -rf * .git*
+
+      # https://github.com/actions/checkout
+      - name: 'Checkout project'
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 3
+
+      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
+        uses: actions/checkout@v5
+        with:
+          repository: xpack-dev-tools/xbb-helper-xpack
+          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
+          ref: ${{github.event.inputs.helper-git-ref}}
+          fetch-depth: 3
+
+      - name: 'Run ${{github.event.inputs.version}} xpm test'
+        run: bash build-assets/scripts/test.sh --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
+
+
+
+
+
   linux-x64-test:
     name: 'linux-x64 pkg-config@${{github.event.inputs.version}} test'
     runs-on: ubuntu-24.04
@@ -67,12 +188,12 @@ jobs:
           env | sort | grep -E '^[^ \t]+='
 
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -91,7 +212,8 @@ jobs:
 
   linux-arm64-test:
     name: 'linux-arm64 pkg-config@${{github.event.inputs.version}} test'
-    runs-on: [self-hosted, linux, arm64, xbbla]
+    # runs-on: [self-hosted, linux, arm64, xbbla]
+    runs-on: ubuntu-24.04-arm
 
     steps:
       - name: 'Show environment'
@@ -110,12 +232,12 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: 'Checkout project'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 3
 
       - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: xpack-dev-tools/xbb-helper-xpack
           path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
@@ -127,143 +249,6 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: /github/workspace/build-assets/scripts/test.sh --image debian --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
-
-
-
-
-
-  linux-arm-test:
-    name: 'linux-arm pkg-config@${{github.event.inputs.version}} test'
-    runs-on: [self-hosted, linux, arm, xbbla32]
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          lsb_release -sd
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
-
-      # https://github.com/actions/checkout
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{github.event.inputs.helper-git-ref}}
-          fetch-depth: 3
-
-      - name: 'Run ${{github.event.inputs.version}} xpm docker test'
-        uses: docker://arm32v7/node:lts-slim # Currently based on debian:12-slim
-        with:
-          entrypoint: /bin/bash # /usr/bin/linux32
-          args: /github/workspace/build-assets/scripts/test.sh --image debian --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
-
-
-
-
-
-  darwin-x64-test:
-    name: 'darwin-x64 pkg-config@${{github.event.inputs.version}} test'
-    runs-on: macos-13
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          sw_vers
-          ls -lA /Library/Developer/CommandLineTools/SDKs || true
-          ls -lA /Applications
-          sudo xcode-select --switch /Applications/Xcode_14.2.app
-          xcode-select --print-path
-          xcodebuild -version || true
-          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
-          clang++ -v
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
-
-      # https://github.com/actions/checkout
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{github.event.inputs.helper-git-ref}}
-          fetch-depth: 3
-
-      - name: 'Run ${{github.event.inputs.version}} xpm test'
-        run: bash build-assets/scripts/test.sh --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
-
-
-
-
-
-  darwin-arm64-test:
-    name: 'darwin-arm64 pkg-config@${{github.event.inputs.version}} test'
-    runs-on: macos-14
-
-    steps:
-      - name: 'Show environment'
-        run: |
-          uname -a
-          sw_vers
-          ls -lA /Library/Developer/CommandLineTools/SDKs || true
-          ls -lA /Applications
-          sudo xcode-select --switch /Applications/Xcode_15.4.app
-          xcode-select --print-path
-          xcodebuild -version || true
-          pkgutil --pkg-info=com.apple.pkg.CLTools_Executables || true
-          clang++ -v
-          echo "whoami: $(whoami)"
-          echo "pwd: $(pwd)"
-          ls -lLA
-          env | sort | grep -E '^[^ \t]+='
-
-      - name: 'Clean working area' # Mandatory for self-hosted runners.
-        run: |
-          chmod -Rf a+w * || true
-          rm -rf * .git*
-
-      # https://github.com/actions/checkout
-      - name: 'Checkout project'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 3
-
-      - name: 'Checkout helper ${{github.event.inputs.helper-git-ref}}'
-        uses: actions/checkout@v4
-        with:
-          repository: xpack-dev-tools/xbb-helper-xpack
-          path: build-assets/xpacks/@xpack-dev-tools/xbb-helper
-          ref: ${{github.event.inputs.helper-git-ref}}
-          fetch-depth: 3
-
-      - name: 'Run ${{github.event.inputs.version}} xpm test'
-        run: bash build-assets/scripts/test.sh --package-version ${{github.event.inputs.package-version}} --version ${{github.event.inputs.version}} --xpm
 
 
 

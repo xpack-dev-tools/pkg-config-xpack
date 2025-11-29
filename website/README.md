@@ -5,6 +5,6 @@ a modern static website generator.
 
 The folder was created with:
 
-```bash
+```sh
 npx create-docusaurus website classic --typescript
 ```

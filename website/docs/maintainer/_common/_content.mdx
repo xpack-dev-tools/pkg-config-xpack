@@ -1,0 +1,692 @@
+{/* DO NOT EDIT! */}
+{/* Automatically generated from docusaurus-template-liquid/templates/docusaurus. */}
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import customField from '@site/src/libs/customField';
+import isXpackSubversionDouble from '@site/src/libs/isXpackSubversionDouble';
+import dateYYYYMMDD from '@site/src/libs/dateYYYYMMDD';
+
+import ProjectReleaseSchedule from '@site/docs/_project/_release-schedule.mdx';
+import ProjectGitHubActionsDurations from '@site/docs/_project/_github-actions-durations.mdx';
+import {developmentDurations} from '@site/docs/_project/_development-durations.mdx';
+
+import CommonGetProjectSources from '@site/docs/_common/_get-project-sources.mdx';
+import CommonGetHelperSources from '@site/docs/_common/_get-helper-sources-details.mdx';
+import CommonGenerateTopCommons from '@site/docs/_common/_generate-top-commons.mdx';
+import CommonGenerateWebsiteCommons from '@site/docs/_common/_generate-website-commons.mdx';
+import CommonUpdateTopCommons from '@site/docs/_common/_update-top-commons.mdx';
+import CommonUpdateWebsiteCommons from '@site/docs/_common/_update-website-commons.mdx';
+
+import CommonPublishWebsite from '@site/docs/_common/_publish-website.mdx';
+import CommonBuildWebsiteLocally from '@site/docs/_common/_build-website-locally.mdx';
+
+import CommonStartLocalWebServer from '@site/docs/_common/_start-local-web-server.mdx';
+
+import CommonCheckGit from '../_common/_check-git.mdx';
+import CommonIncreaseVersion from '../_common/_increase-version.mdx';
+import CommonUpdateWebsiteConfig from '../_common/_update-website-config.mdx';
+
+import CommonFixOpenIssues from '../_common/_fix-open-issues.mdx';
+import CommonUpdateChangelog from '../_common/_update-changelog.mdx';
+import CommonCloseOpenIssues from '../_common/_close-open-issues.mdx';
+import CommonUpdateMainBranch from '../_common/_update-main-branch.mdx';
+import CommonPrepareNewBlogPost from '../_common/_prepare-new-blog-post.mdx'
+import CommonTagNpmLatest from '../_common/_tag-npm-latest.mdx';
+import CommonPrepareRelease from '../_common/_prepare-release.mdx'
+import CommonPublishRelease from '../_common/_publish-release.mdx';
+import CommonSetNewVersion from '../_common/_set-new-version.mdx';
+
+import CommonShareOnTwitter from '../_common/_share-on-twitter.mdx'
+import CommonAnalytics from '../_common/_analytics.mdx';
+
+import CommonPlatformNativeBuild from '../_common/_platform-native-build.mdx';
+import CommonPlatformDockerBuild from '../_common/_platform-docker-build.mdx';
+
+import ProjectMoreRepos from '../_project/_more-repos.mdx';
+import ProjectCheckUpstreamRelease from '../_project/_check-upstream-release.mdx';
+import ProjectUpdateVersionSpecific from '../_project/_update-version-specific.mdx';
+
+import ProjectMoreTests from '../_project/_more-tests.mdx';
+import ProjectShareCustom from '../_project/_share-custom.mdx';
+import ProjectFirstDevelopmentRun from '../_project/_first-development-run.mdx';
+import ProjectFirstProductionRun from '../_project/_first-production-run.mdx';
+import ProjectPatches from '../_project/_patches.mdx';
+
+{/* ------------------------------------------------------------------------ */}
+
+## Prerequisites
+
+**@xpack-dev-tools/pkg-config** is an xpm package that packages platform-specific archives, built with the [xPack Build Box (XBB)](https://xpack.github.io/xpack-build-box/).
+
+The build scripts execute on GNU/Linux and macOS.
+
+
+For details on installing the prerequisites, please read the
+[Build Prerequisites](https://xpack-dev-tools.github.io/docs/developer/install/prerequisites/)
+page.
+
+<CommonGetProjectSources />
+
+<CommonGetHelperSources helperOrganizationName="xpack-dev-tools"  helperProjectName="xbb-helper-xpack" helperBranchName="xpack-development" />
+
+<ProjectMoreRepos/>
+
+<ProjectReleaseSchedule/>
+
+## Prepare a new release
+
+Before starting the build, perform some checks and adjustments.
+
+### Download the build scripts
+
+The build scripts are available in the `build-assets/scripts` folder of the
+[`xpack-dev-tools/pkg-config-xpack`](https://github.com/xpack-dev-tools/pkg-config-xpack/)
+Git repository.
+
+To download them on a new machine, clone the `xpack-development` branch,
+as described above.
+
+<CommonCheckGit />
+
+### Update helper & other dependencies
+
+Check the latest versions at https://github.com/xpack-dev-tools/ and
+update the dependencies in `build-assets/package.json`.
+
+<CommonGenerateTopCommons />
+
+<CommonGenerateWebsiteCommons />
+
+<ProjectCheckUpstreamRelease/>
+
+<CommonIncreaseVersion />
+
+### Update VERSION
+
+Update the `build-assets/scripts/VERSION` file; the format
+is <code>0.29.2-3</code>.
+{isXpackSubversionDouble() ?
+'The fourth & fifth numbers are the xPack release number of this version. A sixth' :
+'The fourth number is the xPack release number of this version. A fifth'} number will be added to the version in `package.json` when the package is published to the `npm` server.
+
+<CommonUpdateWebsiteConfig />
+
+<CommonUpdateTopCommons />
+
+<CommonUpdateWebsiteCommons />
+
+<CommonStartLocalWebServer />
+
+<ProjectUpdateVersionSpecific/>
+
+<CommonFixOpenIssues />
+
+<CommonUpdateChangelog />
+
+### Push the changes to the `xpack-development` branch
+
+Ensure that the latest commit that updates `VERSION` is pushed
+to the `xpack-development` branch!
+
+:::caution
+
+This is critically important; otherwise the next steps
+will build the previous release again!
+
+:::
+
+## Execute the development builds
+
+The builds currently execute on 4 dedicated machines (x64 macOS, arm64 macOS, x64 GNU/Linux, arm64 GNU/Linux).
+
+Before the actual build, execute test/development builds on all platforms.
+
+<ProjectFirstDevelopmentRun/>
+
+### Visual Studio Code extension
+
+All actions are defined as **xpm/xPack actions** and can be conveniently
+triggered via the VS Code graphical interface, utilising the
+[xPack C/C++ Managed Build Tools extension](https://marketplace.visualstudio.com/items?itemName=ilg-vscode.xpack).
+
+<ProjectPatches/>
+
+### Restart the Docker daemons
+
+If, for any reason, the Docker builds need to be cancelled, it is very
+likely that some processes will continue to execute in the background.
+
+To completely terminate them, and ensure that Docker executes
+from a clean slate, restart the Docker daemons on all GNU/Linux
+machines:
+
+```sh
+sudo systemctl restart docker
+```
+
+### Verify if both projects are pushed
+
+Verify that both the **current project** and the **helper** are
+on the `xpack-development` branch and the latest
+commits are pushed to GitHub.
+
+:::caution
+
+This is particularly crucial for large projects; otherwise,
+the build may proceed with the previous version.
+
+:::
+
+### Build the x64 macOS binaries
+
+For x64 macOS, first execute the build on the development machine
+(`wksi`, a recent macOS):
+
+```sh
+export XBB_ENVIRONMENT_SKIP_CHECKS="y"
+```
+
+```sh
+rm -rf ~/Work/xpack-dev-tools/pkg-config-xpack.git/package-lock.json
+```
+
+```sh
+rm -rf ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets/package-lock.json
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull
+
+npm --prefix ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets install
+xpm install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+
+git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
+
+xpm run link-deps -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+
+xpm run deep-clean --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm install --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets && \
+xpm run build-development --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+For a debug build:
+
+```sh
+xpm run build-development-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+The build takes {developmentDurations["work"]} to complete.
+
+When functional, **push** the `xpack-development` branch to GitHub.
+
+Execute the native build on the production machine
+(`xbbmi`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
+
+```sh
+caffeinate ssh xbbmi
+```
+
+<CommonPlatformNativeBuild platform="darwin-x64"/>
+
+### Build the ARM64 macOS binaries
+
+Execute the native build on the production machine
+(`xbbma`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
+
+```sh
+caffeinate ssh xbbma
+```
+
+<CommonPlatformNativeBuild platform="darwin-arm64"/>
+
+### Build the x64 GNU/Linux binaries
+
+Execute the Docker build on the production machine (`xbbli`);
+start a VS Code remote session, or connect with a terminal:
+
+```sh
+caffeinate ssh xbbli
+```
+
+<CommonPlatformDockerBuild platform="linux-x64"/>
+
+### Build the ARM64 GNU/Linux binaries
+
+Execute the Docker build on the production machine (`ampere`);
+start a VS Code remote session, or connect with a terminal:
+
+```sh
+caffeinate ssh ampere
+```
+
+<CommonPlatformDockerBuild platform="linux-arm64"/>
+
+### Update the durations of the development builds
+
+In `website/docs/_project/_development-durations.mdx`, update
+the durations of the builds.
+
+Commit with the message _**website: update development durations**_
+
+### Update the trees in the Installation Guide page
+
+Copy the trees displayed at the end of the test builds and paste to the
+**Folder hierarchy** section within the web file:
+
+<ul>
+<li> <code>website/docs/_project/_folders-hierarchies-linux.mdx</code></li>
+<li> <code>website/docs/_project/_folders-hierarchies-macos.mdx</code></li>
+
+</ul>
+
+If present, replace the actual version
+(such as **0.29.2-3.1**) with the following expression:
+
+```txt
+${customField('releaseVersion')}
+```
+
+:::tip
+
+macOS does not have a `tree` command; either compile it from
+[sources](https://github.com/Old-Man-Programmer/tree), or install it
+via Homebrew, and create a link to `/usr/local/bin`.
+
+:::
+
+
+Commit with the message _**website: update folder hierarchies**_
+
+### Update the list of links in top package.json
+
+Copy and paste the complete list of links displayed at the end of the build, in
+sequence, for each platform (macOS, GNU/Linux),
+and check the
+differences compared to the repository.
+
+Commit if necessary with the message _**package.json: update executables links**_
+
+### How to build a debug version
+
+In some cases it is necessary to execute a debug session with the binaries.
+
+For these cases, the build script accepts the `--debug` options.
+
+There are also xpm actions that utilise this option (**build-development-debug**
+and **docker-build-development-debug**).
+
+### Files cache
+
+The XBB build scripts utilise a local cache such that files are downloaded only
+during the initial execution, with subsequent executions being able to utilise the cached files.
+
+However, occasionally some servers may not be available, and the builds
+may fail.
+
+The workaround is to manually download the files from alternative
+locations (such as
+https://github.com/xpack-dev-tools/files-cache/tree/master/libs),
+place them in the XBB cache (`Work/cache`) and restart the build.
+
+## Execute the production builds
+
+The automation is provided by GitHub Actions and three self-hosted runners
+(the GitHub hosted runners do not have the necessary resources).
+
+### Start the self-hosted runners
+
+If the runners have expired (more than 2 weeks since last use), execute the
+`github-runner-configure.sh` script to reconfigure them. This script
+is available in the `xbb-helper` and
+requires `GITHUB_API_XPACK_DEV_TOOLS_RUNNERS_TOKEN` to be present.
+
+- On the development machine (`wksi`) open
+SSH sessions to the build machines (`xbbmi`, `xbbma`, `xbbli`, `ampere`):
+
+```sh
+caffeinate ssh xbbmi
+caffeinate ssh xbbma
+caffeinate ssh xbbli
+caffeinate ssh ampere
+```
+
+Create a `screen` session, to provide a persistent standard output for
+the runners:
+
+```sh
+screen -S ga
+```
+
+To exit it, use `# Ctrl-a Ctrl-d`.
+
+For `xbbli` & `ampere`, which have additional memory, start two runners:
+
+```sh
+~/actions-runners/xpack-dev-tools/1/run.sh &
+~/actions-runners/xpack-dev-tools/2/run.sh &
+```
+
+For the macOS x64 runners, ensure the deployment target is defined:
+
+```sh
+unset WORK_FOLDER_PATH
+export XBB_ENVIRONMENT_MACOSX_DEPLOYMENT_TARGET="11.0"
+~/actions-runners/xpack-dev-tools/run.sh &
+```
+
+On all other machines, start the runner with:
+
+```sh
+~/actions-runners/xpack-dev-tools/run.sh &
+```
+
+To check the status of the runners locally:
+
+```sh
+ps -a | grep 'Runner.Listener'
+```
+
+To terminate them:
+
+```sh
+killall Runner.Listener
+```
+
+### Check the status of the runners
+
+The status of all self-hosted runners is available at the [GitHub Runners](https://github.com/organizations/xpack-dev-tools/settings/actions/runners) page.
+
+### Publish the helper
+
+Publish a new release of the helper on **npmjs**.
+
+### In the npm packages helper, update the dependency to the new helper
+
+In `templates/_xpack-dev-tools/build-assets/package-merge-liquid.json`, update the reference
+to `"@xpack-dev-tools/xbb-helper":`.
+
+<CommonGenerateTopCommons />
+
+### Check for disk space
+
+Verify that the build machines have sufficient free space and perform
+cleanup operations as necessary:
+
+```sh
+xpm run check-space -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+This is equivalent to executing a `df` command.
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="macos" label="macOS">
+
+```
+df -gH /
+```
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+```sh
+df -BG -H /
+```
+
+</TabItem>
+
+</Tabs>
+
+To free the space utilised by all previous builds of all `xpack-dev-tools` packages:
+
+```sh
+xpm run clear-all-projects-builds -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+This is equivalent to executing a comprehensive `rm` to remove the `build` folders:
+
+```sh
+rm -rf ~/Work/xpack-dev-tools/*/build-assets/build
+```
+
+### Commit and push
+
+- **Push** the `xpack-development` branch to GitHub
+
+:::caution
+
+This is particularly crucial for large projects; otherwise,
+the build may proceed with the previous version.
+
+:::
+
+### Verify if the helper is pushed and published
+
+The helper `xpack` branch must be updated and the npm package published.
+
+<ProjectFirstProductionRun/>
+
+### Manually trigger the build GitHub Actions
+
+To trigger the GitHub Actions builds, utilise the xpm actions:
+
+- **trigger-workflow-build-darwin-x64**
+- **trigger-workflow-build-darwin-arm64**
+- **trigger-workflow-build-linux-x64**
+- **trigger-workflow-build-linux-arm64**
+
+
+The scripts behind these actions require the `GITHUB_API_DISPATCH_TOKEN`
+variable to be present
+in the environment, and the organisation `PUBLISH_TOKEN` to be visible in the
+Settings → Action →
+[Secrets](https://github.com/xpack-dev-tools/pkg-config-xpack/settings/secrets/actions)
+page.
+
+These commands utilise the `xpack-development` branch of this repository.
+
+### Durations & resulting binaries
+
+<ProjectGitHubActionsDurations/>
+
+The workflow results and logs are available from the
+[GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions) page.
+
+Update the values in `website/docs/_project/_github-actions-durations.mdx`
+with those shown by GitHub Actions.
+
+Commit with the message _**website: update actions durations**_
+
+The resulting binaries are available for testing from
+[pre-releases/test](https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/).
+
+## Execute the tests
+
+### Automated tests
+
+The automation is provided by GitHub Actions on GitHub-hosted runners.
+
+To trigger the GitHub Actions tests, execute the xpm actions:
+
+<ul>
+<li><b>trigger-workflow-test-prime</b></li>
+<li><b>trigger-workflow-test-docker-linux-x64</b></li>
+<li><b>trigger-workflow-test-docker-linux-arm64</b></li>
+</ul>
+
+```sh
+xpm run trigger-workflow-test-prime -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+xpm run trigger-workflow-test-docker-linux-x64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+xpm run trigger-workflow-test-docker-linux-arm64 -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+The scripts behind these actions require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
+in the environment.
+
+These actions utilise the `xpack-development` branch of this repository and the
+[pre-releases/test](https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/)
+binaries.
+
+The test results are available from the
+[GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions) page.
+
+After executing the prime tests, download the test results and compare
+with previous runs.
+
+### Manual tests
+
+To download the pre-released archive for the specific platform
+and execute the tests, utilise:
+
+```sh
+git -C ~/Work/xpack-dev-tools/pkg-config-xpack.git pull
+npm --prefix ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets install
+xpm install -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+xpm run test-pre-release -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+For additional tests, on each platform,
+download the archive from
+[pre-releases/test](https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/)
+and check the binaries.
+
+On macOS, remove the `com.apple.quarantine` flag:
+
+```sh
+xattr -cr ${HOME}/Downloads/xpack-*
+```
+
+<ProjectMoreTests/>
+
+## Publish the release
+
+### Create a new GitHub pre-release
+
+- In `CHANGELOG.md`, add the release date and a message
+  such as _**\* v0.29.2-3 released**_
+- **Commit** with the message _**CHANGELOG update**_
+- Check and possibly update the `build-assets/templates/body-github-release-liquid.mdx`
+- **Push** the `xpack-development` branch to GitHub
+- Execute the **trigger-workflow-publish-release** xpm action:
+  ```sh
+  xpm run trigger-workflow-publish-release -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+  ```
+
+The workflow result and logs are available from the
+[GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions) page.
+
+The result is a
+[draft pre-release](https://github.com/xpack-dev-tools/pkg-config-xpack/releases)
+tagged such as **v0.29.2-3** (mind the dash in the middle!) and
+named such as **xPack pkg-config v0.29.2-3** (mind the dash),
+with all binaries attached.
+
+- Edit the draft and ensure it is attached to the `xpack-development` branch (important!)
+- Perform the final edits (maintenance vs. new release) and check if everything is satisfactory
+- **Keep the pre-release button enabled**
+- Do **not** enable Discussions yet
+- Click the **Publish release** button
+
+:::info
+
+At this moment the system should send an email notification to all clients
+watching the pkg-config-xpack project.
+
+:::
+
+<CommonPrepareNewBlogPost />
+
+### Check the list of links in top package.json
+
+- Open the top `package.json` file
+- Check if the links in the `xpack.executables` property cover the actual binaries
+- If necessary, also check on Windows
+
+### Update the package.json list of binaries
+
+- Select the `xpack-development` branch
+- Ensure that the binaries were attached to the pre-release
+- Execute the **update-package-binaries** xpm action:
+  ```sh
+  xpm run update-package-binaries -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+  ```
+- Open the top `package.json` file
+- Check the `baseUrl:` it should match the file URLs (including the tag/version);
+  no terminating `/` is required
+- From the release, check the SHA & file names
+- Compare the SHA sums with those shown by `cat *.sha`
+- Check the executable names
+- **Commit** all changes with the message
+  _**package.json: update URLs for 0.29.2-3.1 release**_
+
+<CommonPrepareRelease />
+
+<CommonSetNewVersion />
+
+<CommonPublishRelease />
+
+### Test if the binaries can be installed with xpm
+
+Execute the **trigger-workflow-test-xpm** xpm action:
+
+```sh
+xpm run trigger-workflow-test-xpm -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+This will test if the package can be installed via `xpm install` on all supported platforms.
+
+The test results are available from the
+[GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions) page.
+
+<CommonTagNpmLatest />
+
+<CommonBuildWebsiteLocally />
+
+<CommonPublishWebsite />
+
+<CommonUpdateMainBranch />
+
+### Create the final GitHub release
+
+- Navigate to the [GitHub Releases](https://github.com/xpack-dev-tools/pkg-config-xpack/releases) page
+- Check the download counter; it should match the number of tests
+- Add a link to the Web blog `[Continue reading »]()`; utilise the same blog URL
+- Remove the _tests only_ notice
+- **Disable** the **Set as a pre-release** button
+- **Enable** the **Set as the latest release** button
+- Click the **Update Release** button
+
+### Check SourceForge mirror
+
+- https://sourceforge.net/projects/pkg-config-xpack/files/
+
+## Clean-ups
+
+### Remove the pre-release binaries
+
+- Navigate to https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/
+- Remove the test binaries
+
+### Clean the work area
+
+Execute the **trigger-workflow-deep-clean** xpm action:
+
+```sh
+xpm run trigger-workflow-deep-clean -C ~/Work/xpack-dev-tools/pkg-config-xpack.git/build-assets
+```
+
+This will remove the build folders on all self-hosted runners.
+
+The results are available from the
+[GitHub Actions](https://github.com/xpack-dev-tools/pkg-config-xpack/actions) page.
+
+<CommonCloseOpenIssues />
+
+<CommonShareOnTwitter />
+
+<ProjectShareCustom/>
+
+<CommonAnalytics />
