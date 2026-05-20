@@ -1,11 +1,20 @@
 {
-  "editor.tabSize": 2,
   "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "files.associations": { "*.json": "jsonc" },
   "editor.stablePeek": true,
   "files.watcherExclude": {
     "**/.git/**": true,
     "**/node_modules/*/**": true,
     "**/build/**": true
+  },
+  "C_Cpp.intelliSenseExclude": {
+    "**/build-assets": true,
+    "**/website": true,
+    "**/node_modules": true,
+    "**/xpacks": true
   },
   "markdownlint.config": {
     "MD041": false
@@ -14,53 +23,6 @@
     "en_GB"
   ],
   "spellright.notificationClass": "warning",
-  "cSpell.ignoreWords": [
-    "Ionescu",
-    "Liviu",
-    "RPATH",
-    "Somsubhra",
-    "UCRT",
-    "aarch",
-    "aclocal",
-    "armhf",
-    "armv",
-    "caffeinate",
-    "cleanall",
-    "cleanlibs",
-    "cleanups",
-    "coreutils",
-    "dockerenv",
-    "dylib",
-    "endraw",
-    "greadlink",
-    "grealpath",
-    "ilegeul",
-    "libexec",
-    "libiconv",
-    "liquidjs",
-    "ncipollo",
-    "nixos",
-    "npmignore",
-    "npmjs",
-    "patchelf",
-    "pipefail",
-    "pkg-config",
-    "postversion",
-    "prerelease",
-    "readelf",
-    "readlink",
-    "realpath",
-    "runpath",
-    "userdel",
-    "vers",
-    "wksi",
-    "workdir",
-    "xattr",
-    "xbbla",
-    "xbbli",
-    "xbbma",
-    "xbbmi",
-    "xpack",
-    "xpacks"
-  ]
+  "cSpell.language": "en-GB",
+  "cSpell.ignoreWords": []
 }

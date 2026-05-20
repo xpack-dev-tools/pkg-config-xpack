@@ -1,0 +1,8 @@
+{
+  "descriptiveName": "xPack pkg-config",
+  "permalinkName": "pkg-config",
+  "preferredName": "xPack pkg-config",
+  "upstreamDescriptiveName": "pkg-config",
+  "skipCiTests": true,
+  "useSelfHostedRunners": true
+}
